@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tessera — The Mosaic Puzzle</title>
+<meta name="description" content="Three puzzle types. 600 levels. Daily challenges. Draw territories where numbers don't repeat, colors mix perfectly, or equations balance.">
+<meta name="apple-itunes-app" content="app-id=XXXXXXXXXX">
+<link rel="icon" type="image/png" href="/icon-192.png">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0a16; color: #e0e0f0; min-height: 100vh; overflow-x: hidden; }
+  .hero { text-align: center; padding: 80px 24px 60px; position: relative; }
+  .hero::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 600px; height: 600px; background: radial-gradient(circle, rgba(124,111,255,0.08) 0%, transparent 70%); pointer-events: none; }
+  .logo-tiles { display: inline-grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 24px; }
+  .logo-tile { width: 48px; height: 48px; border-radius: 12px; }
+  h1 { font-size: 42px; letter-spacing: 5px; margin-bottom: 8px; background: linear-gradient(135deg, #a78bfa, #7c6fff, #c084fc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .tagline { color: #8888aa; font-size: 16px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 40px; }
+  .subtitle { font-size: 20px; color: #b0b0cc; max-width: 500px; margin: 0 auto 40px; line-height: 1.6; }
+  .cta-btn { display: inline-flex; align-items: center; gap: 10px; background: linear-gradient(135deg, #7c6fff, #a78bfa); color: white; font-size: 18px; font-weight: 600; padding: 16px 36px; border-radius: 14px; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 20px rgba(124,111,255,0.3); }
+  .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(124,111,255,0.4); }
+  .cta-btn svg { width: 24px; height: 24px; }
+  .features { max-width: 800px; margin: 0 auto; padding: 40px 24px 80px; }
+  .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; margin-top: 40px; }
+  .feature-card { background: #141425; border: 1px solid #1e1e3a; border-radius: 16px; padding: 28px; text-align: center; transition: transform 0.2s, border-color 0.2s; }
+  .feature-card:hover { transform: translateY(-4px); border-color: #7c6fff; }
+  .feature-icon { font-size: 36px; margin-bottom: 12px; }
+  .feature-title { font-size: 18px; font-weight: 700; margin-bottom: 8px; color: #e0e0f0; }
+  .feature-desc { font-size: 14px; color: #8888aa; line-height: 1.5; }
+  .section-title { font-size: 14px; letter-spacing: 4px; text-transform: uppercase; color: #7c6fff; text-align: center; margin-bottom: 8px; }
+  .section-heading { font-size: 28px; font-weight: 700; text-align: center; margin-bottom: 16px; }
+  .modes { max-width: 800px; margin: 0 auto; padding: 0 24px 80px; }
+  .mode-row { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; margin-top: 32px; }
+  .mode-card { background: #141425; border: 1px solid #1e1e3a; border-radius: 16px; padding: 24px; flex: 1; min-width: 200px; max-width: 260px; text-align: center; }
+  .mode-emoji { font-size: 42px; margin-bottom: 8px; }
+  .mode-name { font-size: 20px; font-weight: 700; margin-bottom: 6px; }
+  .mode-desc { font-size: 13px; color: #8888aa; line-height: 1.5; }
+  footer { text-align: center; padding: 40px 24px; border-top: 1px solid #1e1e3a; color: #555; font-size: 13px; }
+  footer a { color: #7c6fff; text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  @media (max-width: 480px) { h1 { font-size: 32px; } .subtitle { font-size: 17px; } }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="logo-tiles">
+    <div class="logo-tile" style="background: linear-gradient(135deg, #c4b5fd, #8b5cf6);"></div>
+    <div class="logo-tile" style="background: linear-gradient(135deg, #93c5fd, #3b82f6);"></div>
+    <div class="logo-tile" style="background: linear-gradient(135deg, #6ee7b7, #10b981);"></div>
+    <div class="logo-tile" style="background: linear-gradient(135deg, #fde68a, #f59e0b);"></div>
+  </div>
+  <h1>TESSERA</h1>
+  <p class="tagline">The Mosaic Puzzle</p>
+  <p class="subtitle">Three unique puzzle types. 600 handcrafted levels. Daily challenges. Draw territories on a grid — where numbers, colors, and equations come alive.</p>
+  <a href="https://apps.apple.com/app/tessera-the-mosaic-puzzle/idXXXXXXXXXX" class="cta-btn">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+    Download on the App Store
+  </a>
+</div>
+
+<div class="features">
+  <p class="section-title">Why Tessera</p>
+  <p class="section-heading">One Mechanic, Three Twists</p>
+  <div class="feature-grid">
+    <div class="feature-card">
+      <div class="feature-icon">600</div>
+      <div class="feature-title">Journey Levels</div>
+      <div class="feature-desc">200 per puzzle type. Five worlds each, from 4x4 beginner to 8x8 grandmaster.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">&#x1F4C5;</div>
+      <div class="feature-title">Daily Challenge</div>
+      <div class="feature-desc">A fresh puzzle every day. Same for everyone. Build your streak.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">&#x26A1;</div>
+      <div class="feature-title">Challenge Modes</div>
+      <div class="feature-desc">Race AI opponents, solve from memory, play through fog, survive a roguelike gauntlet.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">&#x2665;&#xFE0F;</div>
+      <div class="feature-title">Crafted With Care</div>
+      <div class="feature-desc">Haptic feedback, synthesized sounds, color-blind mode, VoiceOver accessible.</div>
+    </div>
+  </div>
+</div>
+
+<div class="modes">
+  <p class="section-title">Three Puzzle Types</p>
+  <p class="section-heading">Logic. Color. Math.</p>
+  <div class="mode-row">
+    <div class="mode-card">
+      <div class="mode-emoji">&#x1F522;</div>
+      <div class="mode-name">Logic</div>
+      <div class="mode-desc">Draw territories where no number repeats. If you love Sudoku, you'll love this.</div>
+    </div>
+    <div class="mode-card">
+      <div class="mode-emoji">&#x1F3A8;</div>
+      <div class="mode-name">Chroma</div>
+      <div class="mode-desc">Mix Red, Yellow, and Blue into target colors. A puzzle that feels like painting.</div>
+    </div>
+    <div class="mode-card">
+      <div class="mode-emoji">&#x2211;</div>
+      <div class="mode-name">Equate</div>
+      <div class="mode-desc">Group numbers that add, multiply, or divide to hit a target value.</div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p><a href="/privacy">Privacy Policy</a> &middot; <a href="/terms">Terms of Service</a> &middot; <a href="/support">Support</a></p>
+  <p style="margin-top: 12px;">&copy; 2026 Tessera: The Mosaic Puzzle. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
