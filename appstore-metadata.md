@@ -65,10 +65,10 @@ Play every mode for free with ads. Go Premium once ($3.99) to remove all ads, un
 Three puzzle types. 600 levels. Daily challenges. Draw territories where numbers don't repeat, colors mix perfectly, or equations balance.
 
 ## Support URL
-https://tesserapuzzle.app/support
+https://gaborandi.github.io/tesserapuzzle-site/support/
 
 ## Privacy Policy URL
-https://tesserapuzzle.app/privacy
+https://gaborandi.github.io/tesserapuzzle-site/privacy/
 
 ## Copyright
 2026 Tessera Puzzle
@@ -113,30 +113,30 @@ Tres tipos de puzzle. 600 niveles. Desafíos diarios. Dibuja territorios donde l
 ## French (FR)
 
 ### App Name
-Tessera: Puzzle Mosaique
+Tessera: Puzzle Mosaïque
 
 ### Subtitle
 Couleurs, Logique et Maths
 
 ### Keywords
-puzzle,territoire,mosaique,sudoku,logique,melange couleurs,maths,defi quotidien,strategie,cerveau
+puzzle,territoire,mosaïque,sudoku,logique,mélange couleurs,maths,défi quotidien,stratégie,cerveau
 
 ### Description
-Tessera est un magnifique jeu de puzzle territorial avec trois modes de jeu. Tracez des frontieres sur une grille pour creer des regions connectees, chacune avec son propre defi.
+Tessera est un magnifique jeu de puzzle territorial avec trois modes de jeu. Tracez des frontières sur une grille pour créer des régions connectées, chacune avec son propre défi.
 
 TROIS TYPES DE PUZZLE
-- Logique: Les chiffres ne se repetent pas dans chaque territoire
-- Chroma: Melangez les couleurs primaires pour atteindre la couleur cible
-- Equations: Combinez les nombres avec des operations mathematiques
+- Logique: Les chiffres ne se répètent pas dans chaque territoire
+- Chroma: Mélangez les couleurs primaires pour atteindre la couleur cible
+- Équations: Combinez les nombres avec des opérations mathématiques
 
 600 NIVEAUX D'AVENTURE
-Des grilles 4x4 pour debutants aux 8x8 exigeantes. Gagnez des etoiles et debloquez de nouveaux mondes.
+Des grilles 4x4 pour débutants aux 8x8 exigeantes. Gagnez des étoiles et débloquez de nouveaux mondes.
 
-DEFIS QUOTIDIENS
-Un nouveau puzzle chaque jour. Construisez votre serie. Comparez avec vos amis.
+DÉFIS QUOTIDIENS
+Un nouveau puzzle chaque jour. Construisez votre série. Comparez avec vos amis.
 
 GRATUIT
-Tous les modes disponibles gratuitement avec publicites. Premium a $3.99 pour supprimer les publicites.
+Tous les modes disponibles gratuitement avec publicités. Premium à $3.99 pour supprimer les publicités.
 
 ### Promotional Text
 Trois types de puzzle. 600 niveaux. Defis quotidiens. Tracez des territoires ou les nombres, les couleurs et les equations s'assemblent parfaitement.
@@ -149,30 +149,30 @@ Trois types de puzzle. 600 niveaux. Defis quotidiens. Tracez des territoires ou 
 Tessera: Das Mosaik-Puzzle
 
 ### Subtitle
-Farben, Logik & Mathe-Ratsel
+Farben, Logik & Mathe-Rätsel
 
 ### Keywords
-puzzle,territorium,mosaik,sudoku,logik,farbmischung,mathe,tagliche herausforderung,strategie,gehirn
+puzzle,territorium,mosaik,sudoku,logik,farbmischung,mathe,tägliche herausforderung,strategie,gehirn
 
 ### Description
-Tessera ist ein wunderschones Territorium-Puzzlespiel mit drei einzigartigen Spielweisen. Zeichne Grenzen auf einem Gitter, um verbundene Regionen zu erstellen, jede mit ihrer eigenen Herausforderung.
+Tessera ist ein wunderschönes Territorium-Puzzlespiel mit drei einzigartigen Spielweisen. Zeichne Grenzen auf einem Gitter, um verbundene Regionen zu erstellen, jede mit ihrer eigenen Herausforderung.
 
 DREI PUZZLETYPEN
 - Logik: Zahlen wiederholen sich nicht innerhalb eines Territoriums
-- Chroma: Mische Primarfarben um die Zielfarbe zu erreichen
+- Chroma: Mische Primärfarben um die Zielfarbe zu erreichen
 - Gleichungen: Kombiniere Zahlen mit mathematischen Operationen
 
 600 ABENTEUER-LEVEL
-Von 4x4-Anfangergittern bis zu anspruchsvollen 8x8. Verdiene Sterne und schalte neue Welten frei.
+Von 4x4-Anfängergittern bis zu anspruchsvollen 8x8. Verdiene Sterne und schalte neue Welten frei.
 
-TAGLICHE HERAUSFORDERUNGEN
+TÄGLICHE HERAUSFORDERUNGEN
 Jeden Tag ein neues Puzzle. Baue deine Serie auf. Vergleiche mit Freunden.
 
 KOSTENLOS SPIELEN
-Alle Modi kostenlos mit Werbung verfugbar. Premium fur nur $3.99 um alle Werbung zu entfernen.
+Alle Modi kostenlos mit Werbung verfügbar. Premium für nur $3.99 um alle Werbung zu entfernen.
 
 ### Promotional Text
-Drei Puzzletypen. 600 Level. Tagliche Herausforderungen. Zeichne Territorien, in denen Zahlen, Farben und Gleichungen perfekt zusammenpassen.
+Drei Puzzletypen. 600 Level. Tägliche Herausforderungen. Zeichne Territorien, in denen Zahlen, Farben und Gleichungen perfekt zusammenpassen.
 
 ---
 
