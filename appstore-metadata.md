@@ -139,7 +139,7 @@ GRATUIT
 Tous les modes disponibles gratuitement avec publicités. Premium à $3.99 pour supprimer les publicités.
 
 ### Promotional Text
-Trois types de puzzle. 600 niveaux. Defis quotidiens. Tracez des territoires ou les nombres, les couleurs et les equations s'assemblent parfaitement.
+Trois types de puzzle. 600 niveaux. Défis quotidiens. Tracez des territoires où les nombres, les couleurs et les équations s'assemblent parfaitement.
 
 ---
 
