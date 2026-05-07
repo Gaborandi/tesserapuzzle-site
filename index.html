@@ -4,113 +4,920 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tessera &mdash; The Mosaic Puzzle</title>
-<meta name="description" content="Three puzzle types. 600 levels. Daily challenges. Draw territories where numbers don't repeat, colors mix perfectly, or equations balance.">
-<link rel="icon" type="image/png" href="/icon-192.png">
+<meta name="description" content="A premium iOS territory puzzle with Logic, Chroma, and Equate modes, 600 deterministic Journey levels, daily challenges, and elegant mosaic strategy.">
+<meta name="theme-color" content="#0a0a16">
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0a16; color: #e0e0f0; min-height: 100vh; overflow-x: hidden; }
-  .hero { text-align: center; padding: 80px 24px 60px; position: relative; }
-  .hero::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 600px; height: 600px; background: radial-gradient(circle, rgba(124,111,255,0.08) 0%, transparent 70%); pointer-events: none; }
-  .logo-tiles { display: inline-grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 24px; }
-  .logo-tile { width: 48px; height: 48px; border-radius: 12px; }
-  h1 { font-size: 42px; letter-spacing: 5px; margin-bottom: 8px; background: linear-gradient(135deg, #a78bfa, #7c6fff, #c084fc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-  .tagline { color: #8888aa; font-size: 16px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 40px; }
-  .subtitle { font-size: 20px; color: #b0b0cc; max-width: 500px; margin: 0 auto 40px; line-height: 1.6; }
-  .cta-btn { display: inline-flex; align-items: center; gap: 10px; background: linear-gradient(135deg, #7c6fff, #a78bfa); color: white; font-size: 18px; font-weight: 600; padding: 16px 36px; border-radius: 14px; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 20px rgba(124,111,255,0.3); }
-  .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(124,111,255,0.4); }
-  .cta-btn svg { width: 24px; height: 24px; }
-  .features { max-width: 800px; margin: 0 auto; padding: 40px 24px 80px; }
-  .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; margin-top: 40px; }
-  .feature-card { background: #141425; border: 1px solid #1e1e3a; border-radius: 16px; padding: 28px; text-align: center; transition: transform 0.2s, border-color 0.2s; }
-  .feature-card:hover { transform: translateY(-4px); border-color: #7c6fff; }
-  .feature-icon { font-size: 36px; margin-bottom: 12px; }
-  .feature-title { font-size: 18px; font-weight: 700; margin-bottom: 8px; color: #e0e0f0; }
-  .feature-desc { font-size: 14px; color: #8888aa; line-height: 1.5; }
-  .section-title { font-size: 14px; letter-spacing: 4px; text-transform: uppercase; color: #7c6fff; text-align: center; margin-bottom: 8px; }
-  .section-heading { font-size: 28px; font-weight: 700; text-align: center; margin-bottom: 16px; }
-  .modes { max-width: 800px; margin: 0 auto; padding: 0 24px 80px; }
-  .mode-row { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; margin-top: 32px; }
-  .mode-card { background: #141425; border: 1px solid #1e1e3a; border-radius: 16px; padding: 24px; flex: 1; min-width: 200px; max-width: 260px; text-align: center; }
-  .mode-emoji { font-size: 42px; margin-bottom: 8px; }
-  .mode-name { font-size: 20px; font-weight: 700; margin-bottom: 6px; }
-  .mode-desc { font-size: 13px; color: #8888aa; line-height: 1.5; }
-  footer { text-align: center; padding: 40px 24px; border-top: 1px solid #1e1e3a; color: #555; font-size: 13px; }
-  footer a { color: #7c6fff; text-decoration: none; }
-  footer a:hover { text-decoration: underline; }
-  @media (max-width: 480px) { h1 { font-size: 32px; } .subtitle { font-size: 17px; } }
+  :root {
+    --bg: #0a0a16;
+    --surface: #141425;
+    --surface2: #1e1e35;
+    --surface3: #282845;
+    --text: #f5f3ff;
+    --muted: #b8b4d6;
+    --dim: #777292;
+    --violet: #7c6fff;
+    --lavender: #a78bfa;
+    --blue: #60a5fa;
+    --emerald: #34d399;
+    --amber: #fbbf24;
+    --rose: #f472b6;
+    --line: rgba(167, 139, 250, 0.18);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    min-height: 100vh;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: var(--text);
+    background:
+      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px),
+      linear-gradient(180deg, #0a0a16 0%, #101024 48%, #090914 100%);
+    background-size: 34px 34px, 34px 34px, auto;
+    overflow-x: hidden;
+  }
+
+  a { color: inherit; }
+
+  .site-nav {
+    width: min(1120px, calc(100% - 32px));
+    margin: 0 auto;
+    padding: 22px 0 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+  }
+
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+  }
+
+  .mark {
+    width: 34px;
+    height: 34px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
+    padding: 3px;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.08);
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.08), 0 10px 28px rgba(0,0,0,0.34);
+  }
+
+  .mark span { border-radius: 5px; }
+  .mark span:nth-child(1) { background: linear-gradient(145deg, #c4b5fd, #7c3aed); }
+  .mark span:nth-child(2) { background: linear-gradient(145deg, #93c5fd, #2563eb); }
+  .mark span:nth-child(3) { background: linear-gradient(145deg, #6ee7b7, #059669); }
+  .mark span:nth-child(4) { background: linear-gradient(145deg, #fde68a, #d97706); }
+
+  .brand-word {
+    font-size: 14px;
+    letter-spacing: 3px;
+    font-weight: 900;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 13px;
+    padding: 8px 10px;
+    border-radius: 8px;
+  }
+
+  .nav-links a:hover { color: var(--text); background: rgba(255,255,255,0.06); }
+
+  .hero {
+    width: min(1120px, calc(100% - 32px));
+    min-height: calc(100vh - 72px);
+    margin: 0 auto;
+    padding: 54px 0 46px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(310px, 430px);
+    align-items: center;
+    gap: clamp(36px, 6vw, 78px);
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--lavender);
+    font-size: 12px;
+    line-height: 1;
+    font-weight: 800;
+    letter-spacing: 2.8px;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+
+  .eyebrow::before {
+    content: "";
+    width: 28px;
+    height: 2px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--violet), var(--emerald));
+  }
+
+  h1 {
+    max-width: 680px;
+    font-size: clamp(54px, 10vw, 108px);
+    line-height: 0.92;
+    letter-spacing: 0;
+    font-weight: 950;
+    background: linear-gradient(135deg, #f5f3ff 0%, #b9a7ff 38%, #73d8ff 68%, #f8d776 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .tagline {
+    margin-top: 18px;
+    max-width: 620px;
+    color: #d6d0ee;
+    font-size: clamp(20px, 3vw, 30px);
+    line-height: 1.28;
+    font-weight: 750;
+  }
+
+  .subtitle {
+    margin-top: 18px;
+    max-width: 590px;
+    color: var(--muted);
+    font-size: 17px;
+    line-height: 1.75;
+  }
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    margin-top: 34px;
+  }
+
+  .store-button,
+  .secondary-button {
+    display: inline-flex;
+    min-height: 48px;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border-radius: 10px;
+    padding: 0 18px;
+    text-decoration: none;
+    font-weight: 850;
+    font-size: 14px;
+  }
+
+  .store-button {
+    color: white;
+    background: linear-gradient(135deg, var(--violet), #9061f9);
+    box-shadow: 0 14px 38px rgba(124,111,255,0.28);
+  }
+
+  .store-button svg { width: 22px; height: 22px; }
+
+  .secondary-button {
+    color: var(--text);
+    background: rgba(255,255,255,0.06);
+    border: 1px solid var(--line);
+  }
+
+  .stats-strip {
+    margin-top: 34px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    max-width: 520px;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    overflow: hidden;
+    background: rgba(20,20,37,0.72);
+  }
+
+  .stat {
+    padding: 16px;
+    border-right: 1px solid var(--line);
+  }
+
+  .stat:last-child { border-right: 0; }
+  .stat strong { display: block; font-size: 24px; letter-spacing: 0; }
+  .stat span { color: var(--dim); font-size: 12px; text-transform: uppercase; letter-spacing: 1.5px; }
+
+  .device-stage {
+    position: relative;
+    display: grid;
+    place-items: center;
+    min-height: 620px;
+  }
+
+  .theme-rail {
+    position: absolute;
+    inset: 38px 0 auto auto;
+    width: 118px;
+    display: grid;
+    gap: 10px;
+    z-index: 1;
+  }
+
+  .theme-pill {
+    padding: 10px;
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 12px;
+    background: rgba(20,20,37,0.74);
+    box-shadow: 0 12px 34px rgba(0,0,0,0.34);
+  }
+
+  .theme-pill span {
+    display: block;
+    height: 16px;
+    border-radius: 6px;
+    margin-bottom: 7px;
+  }
+
+  .theme-pill small {
+    color: var(--muted);
+    font-size: 11px;
+    font-weight: 700;
+  }
+
+  .phone {
+    position: relative;
+    width: min(330px, 82vw);
+    aspect-ratio: 390 / 844;
+    padding: 14px;
+    border-radius: 42px;
+    background: linear-gradient(145deg, #302f4c, #0b0b14 18%, #252541 100%);
+    box-shadow:
+      0 42px 90px rgba(0,0,0,0.52),
+      0 0 0 1px rgba(255,255,255,0.08),
+      inset 0 0 0 1px rgba(255,255,255,0.12);
+  }
+
+  .phone::before {
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    width: 92px;
+    height: 24px;
+    transform: translateX(-50%);
+    border-radius: 0 0 16px 16px;
+    background: #06060c;
+    z-index: 3;
+  }
+
+  .phone-screen {
+    height: 100%;
+    border-radius: 31px;
+    overflow: hidden;
+    background: #0a0a16;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .hero-shot {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: top center;
+  }
+
+  .app-top {
+    padding: 46px 22px 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .app-title {
+    font-size: 18px;
+    font-weight: 950;
+    letter-spacing: 2px;
+    color: #f5f3ff;
+  }
+
+  .app-badge {
+    font-size: 10px;
+    letter-spacing: 1px;
+    color: #d8caff;
+    border: 1px solid rgba(167,139,250,0.34);
+    border-radius: 999px;
+    padding: 6px 8px;
+    background: rgba(124,111,255,0.16);
+  }
+
+  .phone-copy { padding: 0 22px; }
+  .phone-copy h2 { font-size: 25px; line-height: 1.08; letter-spacing: 0; }
+  .phone-copy p { margin-top: 8px; color: var(--muted); font-size: 12px; line-height: 1.5; }
+
+  .board {
+    width: calc(100% - 44px);
+    margin: 24px auto 16px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 5px;
+    padding: 8px;
+    border-radius: 18px;
+    background: rgba(255,255,255,0.08);
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08);
+  }
+
+  .cell {
+    aspect-ratio: 1;
+    border-radius: 9px;
+    display: grid;
+    place-items: center;
+    color: rgba(255,255,255,0.9);
+    font-weight: 900;
+    font-size: 15px;
+  }
+
+  .v { background: linear-gradient(145deg, #a78bfa, #7c3aed); }
+  .b { background: linear-gradient(145deg, #60a5fa, #2563eb); }
+  .g { background: linear-gradient(145deg, #34d399, #059669); }
+  .a { background: linear-gradient(145deg, #fbbf24, #d97706); color: #2b1a06; }
+  .r { background: linear-gradient(145deg, #f472b6, #db2777); }
+  .n { background: #1e1e35; color: #8d89a8; }
+
+  .target-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    padding: 0 22px;
+  }
+
+  .target {
+    min-height: 54px;
+    border-radius: 13px;
+    border: 1px solid rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.06);
+    padding: 10px;
+  }
+
+  .target strong { display: block; font-size: 13px; }
+  .target span { display: block; margin-top: 4px; color: var(--dim); font-size: 10px; }
+
+  .palette {
+    display: flex;
+    gap: 8px;
+    padding: 22px;
+    margin-top: auto;
+  }
+
+  .swatch {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    box-shadow: 0 0 0 3px rgba(255,255,255,0.08);
+  }
+
+  .section {
+    width: min(1120px, calc(100% - 32px));
+    margin: 0 auto;
+    padding: 74px 0;
+  }
+
+  .section-head {
+    max-width: 720px;
+    margin-bottom: 30px;
+  }
+
+  .kicker {
+    color: var(--lavender);
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: 2.4px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .section h2 {
+    font-size: clamp(32px, 5vw, 54px);
+    line-height: 1.02;
+    letter-spacing: 0;
+  }
+
+  .section-lede {
+    margin-top: 14px;
+    color: var(--muted);
+    font-size: 17px;
+    line-height: 1.68;
+  }
+
+  .mode-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .mode-card {
+    position: relative;
+    min-height: 360px;
+    border-radius: 18px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    background: linear-gradient(145deg, rgba(255,255,255,0.06), rgba(20,20,37,0.9));
+    box-shadow: 0 20px 56px rgba(0,0,0,0.26);
+  }
+
+  .mode-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+    background-size: 24px 24px;
+    pointer-events: none;
+  }
+
+  .mode-content {
+    position: relative;
+    z-index: 1;
+    padding: 24px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mode-label {
+    display: inline-flex;
+    width: fit-content;
+    border-radius: 999px;
+    padding: 7px 10px;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    border: 1px solid rgba(255,255,255,0.16);
+    background: rgba(255,255,255,0.08);
+  }
+
+  .mode-card h3 {
+    margin-top: 18px;
+    font-size: 28px;
+    letter-spacing: 0;
+  }
+
+  .mode-card p {
+    margin-top: 10px;
+    color: var(--muted);
+    line-height: 1.55;
+    font-size: 14px;
+  }
+
+  .mini-board {
+    margin-top: auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+    padding-top: 28px;
+  }
+
+  .mini-board span {
+    aspect-ratio: 1;
+    border-radius: 8px;
+    display: grid;
+    place-items: center;
+    font-size: 13px;
+    font-weight: 900;
+  }
+
+  .logic .mode-label { color: #dcd4ff; border-color: rgba(167,139,250,0.34); }
+  .chroma .mode-label { color: #d5f7ff; border-color: rgba(96,165,250,0.34); }
+  .equate .mode-label { color: #ffefc1; border-color: rgba(251,191,36,0.34); }
+
+  .challenge-band {
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    background: linear-gradient(145deg, rgba(124,111,255,0.11), rgba(20,20,37,0.86));
+    padding: clamp(24px, 5vw, 42px);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    align-items: center;
+  }
+
+  .shot-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+    align-items: start;
+  }
+
+  .shot-card {
+    position: relative;
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    padding: 10px;
+    background:
+      linear-gradient(145deg, rgba(255,255,255,0.08), rgba(20,20,37,0.74));
+    box-shadow: 0 24px 60px rgba(0,0,0,0.28);
+    overflow: hidden;
+  }
+
+  .shot-card::before {
+    content: "";
+    position: absolute;
+    inset: -40% -20% auto;
+    height: 180px;
+    background: radial-gradient(circle, rgba(124,111,255,0.28), transparent 62%);
+    pointer-events: none;
+  }
+
+  .shot-card img {
+    position: relative;
+    width: 100%;
+    display: block;
+    border-radius: 16px;
+    aspect-ratio: 442 / 960;
+    object-fit: cover;
+    object-position: top center;
+    background: #080811;
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.08);
+  }
+
+  .shot-card figcaption {
+    position: relative;
+    padding: 14px 4px 4px;
+  }
+
+  .shot-card strong {
+    display: block;
+    font-size: 14px;
+  }
+
+  .shot-card span {
+    display: block;
+    margin-top: 4px;
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.35;
+  }
+
+  .challenge-list {
+    display: grid;
+    gap: 10px;
+  }
+
+  .challenge-item {
+    display: grid;
+    grid-template-columns: 42px 1fr;
+    gap: 12px;
+    align-items: center;
+    padding: 13px;
+    border-radius: 13px;
+    background: rgba(255,255,255,0.055);
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .challenge-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    display: grid;
+    place-items: center;
+    color: #080810;
+    font-weight: 950;
+  }
+
+  .challenge-item strong { display: block; font-size: 15px; }
+  .challenge-item span { display: block; margin-top: 3px; color: var(--muted); font-size: 13px; line-height: 1.35; }
+
+  .premium-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 18px;
+  }
+
+  .panel {
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    background: rgba(20,20,37,0.74);
+    padding: 28px;
+  }
+
+  .panel h3 {
+    font-size: 24px;
+    letter-spacing: 0;
+    margin-bottom: 12px;
+  }
+
+  .panel p,
+  .panel li {
+    color: var(--muted);
+    line-height: 1.65;
+  }
+
+  .panel ul {
+    list-style: none;
+    display: grid;
+    gap: 10px;
+    margin-top: 18px;
+  }
+
+  .panel li {
+    padding-left: 22px;
+    position: relative;
+  }
+
+  .panel li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--emerald);
+  }
+
+  footer {
+    width: min(1120px, calc(100% - 32px));
+    margin: 0 auto;
+    padding: 38px 0 48px;
+    color: var(--dim);
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    gap: 18px;
+    flex-wrap: wrap;
+    font-size: 13px;
+  }
+
+  footer a {
+    color: var(--muted);
+    text-decoration: none;
+    margin-right: 14px;
+  }
+
+  footer a:hover { color: var(--text); }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .phone { animation: floatPhone 6s ease-in-out infinite; }
+    .cell:nth-child(3n) { animation: softPulse 4.5s ease-in-out infinite; }
+    .cell:nth-child(4n) { animation: softPulse 5.5s ease-in-out infinite; }
+    @keyframes floatPhone {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    @keyframes softPulse {
+      0%, 100% { filter: brightness(1); }
+      50% { filter: brightness(1.15); }
+    }
+  }
+
+  @media (max-width: 900px) {
+    .hero {
+      min-height: auto;
+      grid-template-columns: 1fr;
+      padding-top: 42px;
+    }
+    .device-stage {
+      min-height: 560px;
+    }
+    .theme-rail { right: 6px; top: 18px; }
+    .mode-grid,
+    .shot-grid,
+    .challenge-band,
+    .premium-grid {
+      grid-template-columns: 1fr;
+    }
+    .shot-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 620px) {
+    .site-nav {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+    .nav-links {
+      width: 100%;
+      overflow-x: auto;
+      padding-bottom: 4px;
+    }
+    .hero { padding-bottom: 28px; }
+    .stats-strip { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .stat { padding: 12px 10px; border-bottom: 0; border-right: 1px solid var(--line); }
+    .stat:last-child { border-right: 0; }
+    .stat strong { font-size: 20px; }
+    .stat span { font-size: 10px; letter-spacing: 1px; }
+    .theme-rail {
+      position: static;
+      width: min(330px, 82vw);
+      grid-template-columns: repeat(3, 1fr);
+      margin-top: 14px;
+      order: 2;
+    }
+    .device-stage { min-height: auto; }
+    .section { padding: 54px 0; }
+    .shot-grid { grid-template-columns: 1fr; }
+    .panel { padding: 22px; }
+    footer { display: block; }
+    footer p + p { margin-top: 14px; }
+  }
 </style>
 </head>
 <body>
-
-<div class="hero">
-  <div class="logo-tiles">
-    <div class="logo-tile" style="background: linear-gradient(135deg, #c4b5fd, #8b5cf6);"></div>
-    <div class="logo-tile" style="background: linear-gradient(135deg, #93c5fd, #3b82f6);"></div>
-    <div class="logo-tile" style="background: linear-gradient(135deg, #6ee7b7, #10b981);"></div>
-    <div class="logo-tile" style="background: linear-gradient(135deg, #fde68a, #f59e0b);"></div>
-  </div>
-  <h1>TESSERA</h1>
-  <p class="tagline">The Mosaic Puzzle</p>
-  <p class="subtitle">Three unique puzzle types. 600 deterministic Journey levels. Daily challenges. Draw territories on a grid &mdash; where numbers, colors, and equations come alive.</p>
-  <a href="#" class="cta-btn" aria-disabled="true">
-    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-    App Store link coming soon
+<nav class="site-nav" aria-label="Primary">
+  <a class="brand" href="./" aria-label="Tessera home">
+    <span class="mark" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+    <span class="brand-word">TESSERA</span>
   </a>
-</div>
-
-<div class="features">
-  <p class="section-title">Why Tessera</p>
-  <p class="section-heading">One Mechanic, Three Twists</p>
-  <div class="feature-grid">
-    <div class="feature-card">
-      <div class="feature-icon">600</div>
-      <div class="feature-title">Journey Levels</div>
-      <div class="feature-desc">200 per puzzle type. Five worlds each, from 4x4 beginner to 8x8 grandmaster.</div>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon">&#x1F4C5;</div>
-      <div class="feature-title">Daily Challenge</div>
-      <div class="feature-desc">A fresh puzzle every day. Same for everyone. Build your streak.</div>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon">&#x26A1;</div>
-      <div class="feature-title">Challenge Modes</div>
-      <div class="feature-desc">Race AI opponents, solve from memory, play through fog, survive a roguelike gauntlet.</div>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon">&#x2665;&#xFE0F;</div>
-      <div class="feature-title">Crafted With Care</div>
-      <div class="feature-desc">Haptic feedback, synthesized sounds, color-blind mode, VoiceOver accessible.</div>
-    </div>
+  <div class="nav-links">
+    <a href="#modes">Modes</a>
+    <a href="#screens">Look</a>
+    <a href="#challenge">Challenge</a>
+    <a href="#premium">Premium</a>
+    <a href="support/">Support</a>
   </div>
-</div>
+</nav>
 
-<div class="modes">
-  <p class="section-title">Three Puzzle Types</p>
-  <p class="section-heading">Logic. Color. Math.</p>
-  <div class="mode-row">
-    <div class="mode-card">
-      <div class="mode-emoji">&#x1F522;</div>
-      <div class="mode-name">Logic</div>
-      <div class="mode-desc">Draw territories where no number repeats. If you love Sudoku, you'll love this.</div>
+<main>
+  <section class="hero">
+    <div>
+      <p class="eyebrow">The Mosaic Puzzle</p>
+      <h1>Tessera</h1>
+      <p class="tagline">Draw connected territories where logic, color, and equations all snap into place.</p>
+      <p class="subtitle">A premium iOS puzzle game built around one elegant mechanic: partition the board into perfect regions. Play Logic, Chroma, and Equate across 600 deterministic Journey levels, daily challenges, and focused challenge modes.</p>
+      <div class="actions">
+        <a href="#" class="store-button" aria-disabled="true">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+          App Store link coming soon
+        </a>
+        <a class="secondary-button" href="#modes">Explore modes</a>
+      </div>
+      <div class="stats-strip" aria-label="Game summary">
+        <div class="stat"><strong>600</strong><span>Journey levels</span></div>
+        <div class="stat"><strong>3</strong><span>Puzzle types</span></div>
+        <div class="stat"><strong>$5.99</strong><span>Premium unlock</span></div>
+      </div>
     </div>
-    <div class="mode-card">
-      <div class="mode-emoji">&#x1F3A8;</div>
-      <div class="mode-name">Chroma</div>
-      <div class="mode-desc">Mix Red, Yellow, and Blue into target colors. A puzzle that feels like painting.</div>
+
+    <div class="device-stage" aria-label="Tessera gameplay preview">
+      <div class="theme-rail" aria-hidden="true">
+        <div class="theme-pill"><span style="background:linear-gradient(90deg,#a78bfa,#60a5fa,#34d399,#fbbf24);"></span><small>Classic</small></div>
+        <div class="theme-pill"><span style="background:linear-gradient(90deg,#38bdf8,#06b6d4,#0ea5e9,#22d3ee);"></span><small>Ocean</small></div>
+        <div class="theme-pill"><span style="background:linear-gradient(90deg,#86efac,#22c55e,#14b8a6,#facc15);"></span><small>Forest</small></div>
+      </div>
+
+      <div class="phone">
+        <div class="phone-screen">
+          <img class="hero-shot" src="assets/tessera-chroma.png" alt="Tessera Chroma puzzle board on iPhone">
+        </div>
+      </div>
     </div>
-    <div class="mode-card">
-      <div class="mode-emoji">&#x2211;</div>
-      <div class="mode-name">Equate</div>
-      <div class="mode-desc">Group numbers that add, multiply, or divide to hit a target value.</div>
+  </section>
+
+  <section class="section" id="modes">
+    <div class="section-head">
+      <p class="kicker">Three Puzzle Types</p>
+      <h2>One board language, three different kinds of thinking.</h2>
+      <p class="section-lede">Tessera keeps the core interaction consistent, then changes the rule that makes each territory valid.</p>
     </div>
-  </div>
-</div>
+    <div class="mode-grid">
+      <article class="mode-card logic">
+        <div class="mode-content">
+          <span class="mode-label">Logic</span>
+          <h3>Reverse Sudoku</h3>
+          <p>Draw equal-size connected regions where no number repeats. Clean, readable, and immediately understandable.</p>
+          <div class="mini-board" aria-hidden="true">
+            <span class="v">1</span><span class="v">3</span><span class="b">2</span><span class="b">4</span>
+            <span class="g">4</span><span class="v">2</span><span class="b">1</span><span class="a">3</span>
+            <span class="g">2</span><span class="g">1</span><span class="a">4</span><span class="a">1</span>
+            <span class="r">3</span><span class="r">4</span><span class="r">2</span><span class="a">2</span>
+          </div>
+        </div>
+      </article>
+      <article class="mode-card chroma">
+        <div class="mode-content">
+          <span class="mode-label">Chroma</span>
+          <h3>Color Mixing</h3>
+          <p>Group primary colors into regions that mix into a target shade. It feels tactile without losing puzzle rigor.</p>
+          <div class="mini-board" aria-hidden="true">
+            <span style="background:#ef4444;">R</span><span style="background:#facc15;color:#211500;">Y</span><span style="background:#2563eb;">B</span><span style="background:#f97316;">O</span>
+            <span style="background:#22c55e;">G</span><span style="background:#ef4444;">R</span><span style="background:#a855f7;">P</span><span style="background:#2563eb;">B</span>
+            <span style="background:#facc15;color:#211500;">Y</span><span style="background:#22c55e;">G</span><span style="background:#ef4444;">R</span><span style="background:#a855f7;">P</span>
+            <span style="background:#2563eb;">B</span><span style="background:#f97316;">O</span><span style="background:#facc15;color:#211500;">Y</span><span style="background:#22c55e;">G</span>
+          </div>
+        </div>
+      </article>
+      <article class="mode-card equate">
+        <div class="mode-content">
+          <span class="mode-label">Equate</span>
+          <h3>Spatial Math</h3>
+          <p>Make regions whose numbers combine to a target value. Addition, multiplication, subtraction, and exact division all matter.</p>
+          <div class="mini-board" aria-hidden="true">
+            <span class="a">2</span><span class="a">6</span><span class="g">3</span><span class="g">4</span>
+            <span class="b">8</span><span class="a">1</span><span class="g">2</span><span class="r">5</span>
+            <span class="b">3</span><span class="b">4</span><span class="r">7</span><span class="r">1</span>
+            <span class="v">9</span><span class="v">2</span><span class="v">6</span><span class="r">3</span>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section" id="screens">
+    <div class="section-head">
+      <p class="kicker">Game Look</p>
+      <h2>Color themes, dense boards, and a calm mobile rhythm.</h2>
+      <p class="section-lede">The public site now uses the same deep navy, violet, blue, emerald, and amber language as the app, with real gameplay screens instead of generic placeholders.</p>
+    </div>
+    <div class="shot-grid">
+      <figure class="shot-card">
+        <img src="assets/tessera-home.png" alt="Tessera home screen with Journey, Daily Challenge, Free Play, and challenge modes">
+        <figcaption><strong>Calm Home</strong><span>Main modes first, secondary challenges lower.</span></figcaption>
+      </figure>
+      <figure class="shot-card">
+        <img src="assets/tessera-chroma.png" alt="Tessera Chroma mode board with color targets">
+        <figcaption><strong>Chroma</strong><span>Color-mix targets with the same board rhythm.</span></figcaption>
+      </figure>
+      <figure class="shot-card">
+        <img src="assets/tessera-equate.png" alt="Tessera Equate mode board with equation targets">
+        <figcaption><strong>Equate</strong><span>Math targets presented as premium variants.</span></figcaption>
+      </figure>
+      <figure class="shot-card">
+        <img src="assets/tessera-daily.png" alt="Tessera Daily Challenge board">
+        <figcaption><strong>Daily</strong><span>Repeatable challenge screens for launch.</span></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section" id="challenge">
+    <div class="challenge-band">
+      <div>
+        <p class="kicker">Beyond the Journey</p>
+        <h2>Built for short daily play and deep mastery.</h2>
+        <p class="section-lede">Tessera gives you a calm main path, then lets the same board become a race, memory test, fog puzzle, or roguelike run.</p>
+      </div>
+      <div class="challenge-list">
+        <div class="challenge-item">
+          <div class="challenge-icon" style="background:var(--blue);">R</div>
+          <div><strong>Territory Rush</strong><span>Race a simulated AI opponent on the same puzzle.</span></div>
+        </div>
+        <div class="challenge-item">
+          <div class="challenge-icon" style="background:var(--lavender);">E</div>
+          <div><strong>Echo</strong><span>Memorize the solution, then rebuild it from memory.</span></div>
+        </div>
+        <div class="challenge-item">
+          <div class="challenge-icon" style="background:var(--emerald);">F</div>
+          <div><strong>Fog</strong><span>Numbers disappear over time, with only a few peeks.</span></div>
+        </div>
+        <div class="challenge-item">
+          <div class="challenge-icon" style="background:var(--amber);">M</div>
+          <div><strong>Mosaic Run</strong><span>Survive escalating rounds with modifier cards.</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="premium">
+    <div class="section-head">
+      <p class="kicker">Fair Monetization</p>
+      <h2>Free with ads. Premium once.</h2>
+    </div>
+    <div class="premium-grid">
+      <div class="panel">
+        <h3>Tessera Premium</h3>
+        <p>A one-time $5.99 unlock for players who want Tessera to feel quiet and complete.</p>
+        <ul>
+          <li>Removes banner, interstitial, and rewarded ads</li>
+          <li>Unlocks unlimited hints and unlimited daily plays</li>
+          <li>Includes premium color themes and full league stats</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h3>Launch Ready</h3>
+        <p>The public privacy, terms, and support pages are live. Tessera uses Google UMP consent before requesting ads, Apple StoreKit for purchases, and local-first save data.</p>
+      </div>
+    </div>
+  </section>
+</main>
 
 <footer>
-  <p><a href="privacy/">Privacy Policy</a> &middot; <a href="terms/">Terms of Service</a> &middot; <a href="support/">Support</a></p>
-  <p style="margin-top: 12px;">&copy; 2026 Tessera: The Mosaic Puzzle. All rights reserved.</p>
+  <p>
+    <a href="privacy/">Privacy Policy</a>
+    <a href="terms/">Terms of Service</a>
+    <a href="support/">Support</a>
+  </p>
+  <p>&copy; 2026 Tessera: The Mosaic Puzzle. All rights reserved.</p>
 </footer>
-
 </body>
 </html>
