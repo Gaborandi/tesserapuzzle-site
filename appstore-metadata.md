@@ -17,7 +17,7 @@ Secondary: Games > Board
 Free (with in-app purchases)
 
 ## In-App Purchases
-- Tessera Premium — $3.99 (removes ads, unlimited hints, unlimited plays, exclusive themes)
+- Tessera Premium — $5.99 (removes ads, unlimited hints, unlimited plays, exclusive themes)
 - Hint Pack — $0.99 (10 bonus hints)
 
 ## Keywords (100 chars max)
@@ -59,7 +59,7 @@ DESIGNED WITH CARE
 - Drag or tap — play your way
 
 FREE TO PLAY, FAIR MONETIZATION
-Play every mode for free with ads. Go Premium once ($3.99) to remove all ads, unlock unlimited hints, unlimited daily plays, and exclusive color themes. No subscriptions. No pay-to-win.
+Play every mode for free with ads. Go Premium once ($5.99) to remove all ads, unlock unlimited hints, unlimited daily plays, and exclusive color themes. No subscriptions. No pay-to-win.
 
 ## Promotional Text (170 chars, can be updated without review)
 Three puzzle types. 600 levels. Daily challenges. Draw territories where numbers don't repeat, colors mix perfectly, or equations balance.
@@ -103,7 +103,7 @@ DESAFÍOS DIARIOS
 Un puzzle nuevo cada día. Construye tu racha. Compara con amigos.
 
 JUEGA GRATIS
-Todos los modos disponibles gratis con anuncios. Premium por solo $3.99 para eliminar anuncios y desbloquear todo.
+Todos los modos disponibles gratis con anuncios. Premium por solo $5.99 para eliminar anuncios y desbloquear todo.
 
 ### Promotional Text
 Tres tipos de puzzle. 600 niveles. Desafíos diarios. Dibuja territorios donde los números no se repitan, los colores se mezclen o las ecuaciones cuadren.
@@ -136,7 +136,7 @@ DÉFIS QUOTIDIENS
 Un nouveau puzzle chaque jour. Construisez votre série. Comparez avec vos amis.
 
 GRATUIT
-Tous les modes disponibles gratuitement avec publicités. Premium à $3.99 pour supprimer les publicités.
+Tous les modes disponibles gratuitement avec publicités. Premium à $5.99 pour supprimer les publicités.
 
 ### Promotional Text
 Trois types de puzzle. 600 niveaux. Défis quotidiens. Tracez des territoires où les nombres, les couleurs et les équations s'assemblent parfaitement.
@@ -169,7 +169,7 @@ TÄGLICHE HERAUSFORDERUNGEN
 Jeden Tag ein neues Puzzle. Baue deine Serie auf. Vergleiche mit Freunden.
 
 KOSTENLOS SPIELEN
-Alle Modi kostenlos mit Werbung verfügbar. Premium für nur $3.99 um alle Werbung zu entfernen.
+Alle Modi kostenlos mit Werbung verfügbar. Premium für nur $5.99 um alle Werbung zu entfernen.
 
 ### Promotional Text
 Drei Puzzletypen. 600 Level. Tägliche Herausforderungen. Zeichne Territorien, in denen Zahlen, Farben und Gleichungen perfekt zusammenpassen.
@@ -202,7 +202,7 @@ Tesseraは美しいテリトリーパズルゲームです。3つのユニーク
 毎日新しいパズル。ストリークを構築。友達と比較。
 
 無料プレイ
-全モード広告付きで無料。プレミアム$3.99で広告なし、無制限のヒントとプレイ。
+全モード広告付きで無料。プレミアム$5.99で広告なし、無制限のヒントとプレイ。
 
 ### Promotional Text
 3つのパズルタイプ。600レベル。デイリーチャレンジ。数字、色、方程式が完璧に組み合わさるテリトリーを描こう。
