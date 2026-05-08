@@ -126,6 +126,18 @@
 
   .nav-links a:hover { color: var(--text); background: rgba(255,255,255,0.06); }
 
+  .language-select {
+    min-height: 36px;
+    border: 1px solid rgba(167,139,250,0.26);
+    border-radius: 9px;
+    color: var(--text);
+    background: rgba(20,20,37,0.88);
+    padding: 0 10px;
+    font: inherit;
+    font-size: 13px;
+    font-weight: 750;
+  }
+
   .hero {
     width: min(1120px, calc(100% - 32px));
     min-height: calc(100vh - 72px);
@@ -743,6 +755,26 @@
 
   footer a:hover { color: var(--text); }
 
+  .footer-identity {
+    max-width: 460px;
+    color: var(--muted);
+    line-height: 1.55;
+  }
+
+  .footer-identity strong {
+    display: block;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+
+  html[dir="rtl"] body { direction: rtl; }
+  html[dir="rtl"] .site-nav,
+  html[dir="rtl"] footer { direction: rtl; }
+  html[dir="rtl"] .eyebrow::before { order: 2; }
+  html[dir="rtl"] .panel li { padding-left: 0; padding-right: 22px; }
+  html[dir="rtl"] .panel li::before { left: auto; right: 0; }
+  html[dir="rtl"] footer a { margin-right: 0; margin-left: 14px; }
+
   @media (prefers-reduced-motion: no-preference) {
     .phone { animation: floatPhone 6s ease-in-out infinite; }
     .cell:nth-child(3n) { animation: softPulse 4.5s ease-in-out infinite; }
@@ -821,12 +853,18 @@
       <span class="brand-word">TESSERA</span>
     </a>
     <div class="nav-links">
-      <a href="#modes">Modes</a>
-      <a href="#screens">Look</a>
-      <a href="#challenge">Challenge</a>
-      <a href="#premium">Premium</a>
-      <a href="#launch">Trust</a>
-      <a href="support/">Support</a>
+      <a href="#modes" data-i18n="nav.modes">Modes</a>
+      <a href="#screens" data-i18n="nav.look">Look</a>
+      <a href="#challenge" data-i18n="nav.challenge">Challenge</a>
+      <a href="#premium" data-i18n="nav.premium">Premium</a>
+      <a href="#launch" data-i18n="nav.trust">Trust</a>
+      <a href="support/" data-i18n="nav.support">Support</a>
+      <select class="language-select" aria-label="Language">
+        <option value="en">English</option>
+        <option value="ar">العربية</option>
+        <option value="es">Español</option>
+        <option value="fr">Français</option>
+      </select>
     </div>
   </nav>
 </header>
@@ -834,21 +872,21 @@
 <main id="main">
   <section class="hero">
     <div>
-      <p class="eyebrow">Premium Indie Puzzle</p>
-      <h1>Tessera</h1>
-      <p class="tagline">Logic becomes territory.</p>
-      <p class="subtitle">Partition each board into connected regions that satisfy a rule. Tessera turns clean spatial logic into a mosaic puzzle across Logic, Chroma, Equate, daily challenges, and 600 deterministic Journey levels.</p>
+      <p class="eyebrow" data-i18n="home.eyebrow">Premium Indie Puzzle</p>
+      <h1 data-i18n="home.title">Tessera</h1>
+      <p class="tagline" data-i18n="home.tagline">Logic becomes territory.</p>
+      <p class="subtitle" data-i18n="home.subtitle">Partition each board into connected regions that satisfy a rule. Tessera turns clean spatial logic into a mosaic puzzle across Logic, Chroma, Equate, daily challenges, and 600 deterministic Journey levels.</p>
       <div class="actions">
         <a href="#" class="store-button" aria-disabled="true">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-          App Store link coming soon
+          <span data-i18n="home.appstore">App Store link coming soon</span>
         </a>
-        <a class="secondary-button" href="#modes">Explore modes</a>
+        <a class="secondary-button" href="#modes" data-i18n="home.explore">Explore modes</a>
       </div>
       <dl class="trust-strip" aria-label="Game summary">
-        <div><dt>600 levels</dt><dd>Deterministic Journey progression</dd></div>
-        <div><dt>One unlock</dt><dd>$5.99 premium, no subscription</dd></div>
-        <div><dt>Local-first</dt><dd>Private save data and clear support links</dd></div>
+        <div><dt data-i18n="home.stat.levels.title">600 levels</dt><dd data-i18n="home.stat.levels.desc">Deterministic Journey progression</dd></div>
+        <div><dt data-i18n="home.stat.unlock.title">One unlock</dt><dd data-i18n="home.stat.unlock.desc">$5.99 premium, no subscription</dd></div>
+        <div><dt data-i18n="home.stat.local.title">Local-first</dt><dd data-i18n="home.stat.local.desc">Private save data and clear support links</dd></div>
       </dl>
     </div>
 
@@ -869,16 +907,16 @@
 
   <section class="section" id="modes">
     <div class="section-head">
-      <p class="kicker">The Core Idea</p>
-      <h2>A region is correct only when its shape and rule both hold.</h2>
-      <p class="section-lede">Every mode asks the same elegant question: which cells belong together? The answer changes when the rule becomes numbers, color, or exact equations.</p>
+      <p class="kicker" data-i18n="home.modes.kicker">The Core Idea</p>
+      <h2 data-i18n="home.modes.title">A region is correct only when its shape and rule both hold.</h2>
+      <p class="section-lede" data-i18n="home.modes.lede">Every mode asks the same elegant question: which cells belong together? The answer changes when the rule becomes numbers, color, or exact equations.</p>
     </div>
     <div class="mode-grid">
       <article class="mode-card logic">
         <div class="mode-content">
-          <span class="mode-label">Logic</span>
-          <h3>Reverse Sudoku</h3>
-          <p>Draw equal-size connected regions where no number repeats. Clean, readable, and immediately understandable.</p>
+          <span class="mode-label" data-i18n="home.logic.label">Logic</span>
+          <h3 data-i18n="home.logic.title">Reverse Sudoku</h3>
+          <p data-i18n="home.logic.desc">Draw equal-size connected regions where no number repeats. Clean, readable, and immediately understandable.</p>
           <div class="mini-board" aria-hidden="true">
             <span class="v">1</span><span class="v">3</span><span class="b">2</span><span class="b">4</span>
             <span class="g">4</span><span class="v">2</span><span class="b">1</span><span class="a">3</span>
@@ -889,9 +927,9 @@
       </article>
       <article class="mode-card chroma">
         <div class="mode-content">
-          <span class="mode-label">Chroma</span>
-          <h3>Color Mixing</h3>
-          <p>Group primary colors into regions that mix into a target shade. It feels tactile without losing puzzle rigor.</p>
+          <span class="mode-label" data-i18n="home.chroma.label">Chroma</span>
+          <h3 data-i18n="home.chroma.title">Color Mixing</h3>
+          <p data-i18n="home.chroma.desc">Group primary colors into regions that mix into a target shade. It feels tactile without losing puzzle rigor.</p>
           <div class="mini-board" aria-hidden="true">
             <span style="background:#ef4444;">R</span><span style="background:#facc15;color:#211500;">Y</span><span style="background:#2563eb;">B</span><span style="background:#f97316;">O</span>
             <span style="background:#22c55e;">G</span><span style="background:#ef4444;">R</span><span style="background:#a855f7;">P</span><span style="background:#2563eb;">B</span>
@@ -902,9 +940,9 @@
       </article>
       <article class="mode-card equate">
         <div class="mode-content">
-          <span class="mode-label">Equate</span>
-          <h3>Spatial Math</h3>
-          <p>Make regions whose numbers combine to a target value. Addition, multiplication, subtraction, and exact division all matter.</p>
+          <span class="mode-label" data-i18n="home.equate.label">Equate</span>
+          <h3 data-i18n="home.equate.title">Spatial Math</h3>
+          <p data-i18n="home.equate.desc">Make regions whose numbers combine to a target value. Addition, multiplication, subtraction, and exact division all matter.</p>
           <div class="mini-board" aria-hidden="true">
             <span class="a">2</span><span class="a">6</span><span class="g">3</span><span class="g">4</span>
             <span class="b">8</span><span class="a">1</span><span class="g">2</span><span class="r">5</span>
@@ -918,26 +956,26 @@
 
   <section class="section" id="screens">
     <div class="section-head">
-      <p class="kicker">Game Look</p>
-      <h2>Color themes, dense boards, and a calm mobile rhythm.</h2>
-      <p class="section-lede">Deep navy surfaces, violet highlights, and mosaic color accents match the app itself. The page uses real gameplay screens so the puzzle is visible immediately.</p>
+      <p class="kicker" data-i18n="home.look.kicker">Game Look</p>
+      <h2 data-i18n="home.look.title">Color themes, dense boards, and a calm mobile rhythm.</h2>
+      <p class="section-lede" data-i18n="home.look.lede">Deep navy surfaces, violet highlights, and mosaic color accents match the app itself. The page uses real gameplay screens so the puzzle is visible immediately.</p>
     </div>
     <div class="shot-grid">
       <figure class="shot-card">
         <img src="assets/tessera-home.png" alt="Tessera home screen with Journey, Daily Challenge, Free Play, and challenge modes">
-        <figcaption><strong>Calm Home</strong><span>Main modes first, secondary challenges lower.</span></figcaption>
+        <figcaption><strong data-i18n="home.shot.home.title">Calm Home</strong><span data-i18n="home.shot.home.desc">Main modes first, secondary challenges lower.</span></figcaption>
       </figure>
       <figure class="shot-card">
         <img src="assets/tessera-chroma.png" alt="Tessera Chroma mode board with color targets">
-        <figcaption><strong>Chroma</strong><span>Color-mix targets with the same board rhythm.</span></figcaption>
+        <figcaption><strong data-i18n="home.shot.chroma.title">Chroma</strong><span data-i18n="home.shot.chroma.desc">Color-mix targets with the same board rhythm.</span></figcaption>
       </figure>
       <figure class="shot-card">
         <img src="assets/tessera-equate.png" alt="Tessera Equate mode board with equation targets">
-        <figcaption><strong>Equate</strong><span>Math targets presented as premium variants.</span></figcaption>
+        <figcaption><strong data-i18n="home.shot.equate.title">Equate</strong><span data-i18n="home.shot.equate.desc">Math targets presented as premium variants.</span></figcaption>
       </figure>
       <figure class="shot-card">
         <img src="assets/tessera-daily.png" alt="Tessera Daily Challenge board">
-        <figcaption><strong>Daily</strong><span>Repeatable challenge screens for launch.</span></figcaption>
+        <figcaption><strong data-i18n="home.shot.daily.title">Daily</strong><span data-i18n="home.shot.daily.desc">Repeatable challenge screens for launch.</span></figcaption>
       </figure>
     </div>
   </section>
@@ -945,26 +983,26 @@
   <section class="section" id="challenge">
     <div class="challenge-band">
       <div>
-        <p class="kicker">Beyond the Journey</p>
-        <h2>Built for short daily play and deep mastery.</h2>
-        <p class="section-lede">Tessera gives you a calm main path, then lets the same board become a race, memory test, fog puzzle, or roguelike run.</p>
+        <p class="kicker" data-i18n="home.challenge.kicker">Beyond the Journey</p>
+        <h2 data-i18n="home.challenge.title">Built for short daily play and deep mastery.</h2>
+        <p class="section-lede" data-i18n="home.challenge.lede">Tessera gives you a calm main path, then lets the same board become a race, memory test, fog puzzle, or roguelike run.</p>
       </div>
       <div class="challenge-list">
         <div class="challenge-item">
           <div class="challenge-icon" style="background:var(--blue);">R</div>
-          <div><strong>Territory Rush</strong><span>Race a simulated AI opponent on the same puzzle.</span></div>
+          <div><strong data-i18n="home.rush.title">Territory Rush</strong><span data-i18n="home.rush.desc">Race a simulated AI opponent on the same puzzle.</span></div>
         </div>
         <div class="challenge-item">
           <div class="challenge-icon" style="background:var(--lavender);">E</div>
-          <div><strong>Echo</strong><span>Memorize the solution, then rebuild it from memory.</span></div>
+          <div><strong data-i18n="home.echo.title">Echo</strong><span data-i18n="home.echo.desc">Memorize the solution, then rebuild it from memory.</span></div>
         </div>
         <div class="challenge-item">
           <div class="challenge-icon" style="background:var(--emerald);">F</div>
-          <div><strong>Fog</strong><span>Numbers disappear over time, with only a few peeks.</span></div>
+          <div><strong data-i18n="home.fog.title">Fog</strong><span data-i18n="home.fog.desc">Numbers disappear over time, with only a few peeks.</span></div>
         </div>
         <div class="challenge-item">
           <div class="challenge-icon" style="background:var(--amber);">M</div>
-          <div><strong>Mosaic Run</strong><span>Survive escalating rounds with modifier cards.</span></div>
+          <div><strong data-i18n="home.run.title">Mosaic Run</strong><span data-i18n="home.run.desc">Survive escalating rounds with modifier cards.</span></div>
         </div>
       </div>
     </div>
@@ -972,25 +1010,25 @@
 
   <section class="section" id="premium">
     <div class="section-head">
-      <p class="kicker">Premium By Restraint</p>
-      <h2>Free with ads. One unlock makes Tessera quiet.</h2>
+      <p class="kicker" data-i18n="home.premium.kicker">Premium By Restraint</p>
+      <h2 data-i18n="home.premium.title">Free with ads. One unlock makes Tessera quiet.</h2>
     </div>
     <div class="premium-grid">
       <div class="panel">
-        <h3>Tessera Premium</h3>
-        <p>A one-time $5.99 unlock for players who want Tessera to feel quiet and complete.</p>
+        <h3 data-i18n="home.premium.card.title">Tessera Premium</h3>
+        <p data-i18n="home.premium.card.desc">A one-time $5.99 unlock for players who want Tessera to feel quiet and complete.</p>
         <ul>
-          <li>Removes banner, interstitial, and rewarded ads</li>
-          <li>Unlocks unlimited hints and unlimited daily plays</li>
-          <li>Includes premium color themes and full league stats</li>
+          <li data-i18n="home.premium.li1">Removes banner, interstitial, and rewarded ads</li>
+          <li data-i18n="home.premium.li2">Unlocks unlimited hints and unlimited daily plays</li>
+          <li data-i18n="home.premium.li3">Includes premium color themes and full league stats</li>
         </ul>
       </div>
       <div class="panel">
-        <h3>Clear Boundaries</h3>
+        <h3 data-i18n="home.boundaries.title">Clear Boundaries</h3>
         <div class="proof-list">
-          <p>Rewarded ads are player-started and tied to useful bonuses, not forced puzzle progress.</p>
-          <p>Google UMP consent runs before ad requests, and Apple StoreKit handles the one-time purchase.</p>
-          <p>Save data stays local unless the player explicitly exports it from settings.</p>
+          <p data-i18n="home.boundaries.p1">Rewarded ads are player-started and tied to useful bonuses, not forced puzzle progress.</p>
+          <p data-i18n="home.boundaries.p2">Google UMP consent runs before ad requests, and Apple StoreKit handles the one-time purchase.</p>
+          <p data-i18n="home.boundaries.p3">Hint packs, if offered, are only for non-premium players; Premium includes unlimited hints.</p>
         </div>
       </div>
     </div>
@@ -998,24 +1036,26 @@
 
   <section class="section launch-band" id="launch">
     <div>
-      <p class="kicker">Trust And Launch</p>
-      <h2>Public links are ready for App Store review.</h2>
+      <p class="kicker" data-i18n="home.launch.kicker">Trust And Launch</p>
+      <h2 data-i18n="home.launch.title">Public links are ready for App Store review.</h2>
     </div>
     <div class="proof-list">
-      <p><strong>Privacy:</strong> clear data, ads, consent, purchases, analytics, and local save language.</p>
-      <p><strong>Terms:</strong> simple use, purchase, ad, and support terms for the launch build.</p>
-      <p><strong>Support:</strong> one-page help with contact details, restore purchase guidance, and troubleshooting.</p>
+      <p data-i18n-html="home.launch.p1"><strong>Privacy:</strong> clear data, ads, consent, purchases, analytics, and local save language.</p>
+      <p data-i18n-html="home.launch.p2"><strong>Terms:</strong> simple use, purchase, ad, and support terms for the launch build.</p>
+      <p data-i18n-html="home.launch.p3"><strong>Support:</strong> one-page help with contact details, restore purchase guidance, and troubleshooting.</p>
     </div>
   </section>
 </main>
 
 <footer>
+  <p class="footer-identity"><strong>Tessera</strong><span data-i18n="footer.identity">Tessera is an independent mobile game by Gaborandi.</span></p>
   <p>
-    <a href="privacy/">Privacy Policy</a>
-    <a href="terms/">Terms of Service</a>
-    <a href="support/">Support</a>
+    <a href="privacy/" data-i18n="nav.privacy">Privacy Policy</a>
+    <a href="terms/" data-i18n="nav.terms">Terms of Service</a>
+    <a href="support/" data-i18n="nav.support">Support</a>
   </p>
-  <p>&copy; 2026 Tessera: The Mosaic Puzzle. All rights reserved.</p>
+  <p data-i18n="footer.copy">&copy; 2026 Gaborandi. Tessera: The Mosaic Puzzle. All rights reserved.</p>
 </footer>
+<script src="assets/site.js"></script>
 </body>
 </html>
