@@ -4,47 +4,101 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Support &mdash; Tessera: The Mosaic Puzzle</title>
-<style>
-  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 720px; margin: 0 auto; padding: 24px 16px; color: #1a1a2e; line-height: 1.7; background: #fafafa; }
-  h1 { font-size: 28px; margin-bottom: 4px; }
-  h2 { font-size: 20px; margin-top: 32px; color: #7c6fff; }
-  a { color: #7c6fff; }
-  .card { background: white; border-radius: 12px; padding: 24px; margin: 16px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
-  .footer { margin-top: 48px; padding-top: 24px; border-top: 1px solid #ddd; font-size: 13px; color: #888; }
-</style>
+<meta name="description" content="Support page for Tessera: The Mosaic Puzzle, including contact, restore purchase help, save backup help, and gameplay FAQ.">
+<link rel="stylesheet" href="../assets/legal.css">
 </head>
 <body>
-<h1>Support</h1>
-<p>Need help with Tessera? We're here for you.</p>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <nav class="site-nav" aria-label="Primary">
+    <a class="brand" href="../" aria-label="Tessera home">
+      <span class="mark" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+      <span>TESSERA</span>
+    </a>
+    <div class="nav-links">
+      <a href="../" data-i18n="nav.home">Home</a>
+      <a href="../privacy/" data-i18n="nav.privacy">Privacy</a>
+      <a href="../terms/" data-i18n="nav.terms">Terms</a>
+      <select class="language-select" aria-label="Language">
+        <option value="en">English</option>
+        <option value="ar">العربية</option>
+        <option value="es">Español</option>
+        <option value="fr">Français</option>
+      </select>
+    </div>
+  </nav>
+</header>
 
-<div class="card">
-  <h2>Contact Us</h2>
-  <p>For bug reports, feature requests, or any questions:</p>
-  <p><a href="mailto:a.alameldien@gmail.com">a.alameldien@gmail.com</a></p>
-  <p>We typically respond within 24-48 hours.</p>
-</div>
+<main class="page" id="main">
+  <section class="page-hero">
+    <p class="eyebrow" data-i18n="support.eyebrow">Support</p>
+    <h1 data-i18n="support.title">Tessera Support</h1>
+    <p class="hero-lede" data-i18n="support.lede">Send a bug report, purchase question, or gameplay issue and include your device model, iOS version, and what you were doing when the issue appeared.</p>
+    <div class="legal-meta">
+      <span class="pill" data-i18n="footer.identity">Tessera is an independent mobile game by Gaborandi.</span>
+      <span class="pill" data-i18n="legal.updated">Last updated: May 7, 2026</span>
+    </div>
+  </section>
 
-<div class="card">
-  <h2>FAQ</h2>
-  <p><strong>How do I restore my purchase?</strong></p>
-  <p>Go to Settings > Premium section > tap "Restore Purchases". This will restore your Premium status on any device signed into the same Apple ID.</p>
+  <div class="support-grid">
+    <div class="contact-card">
+      <strong data-i18n="support.contact.title">Contact Us</strong>
+      <p data-i18n="support.contact.body">For bug reports, feature requests, or any questions:</p>
+      <p><a href="mailto:a.alameldien@gmail.com">a.alameldien@gmail.com</a></p>
+      <p data-i18n="support.response">We typically respond within 24-48 hours.</p>
+    </div>
+    <div class="summary-card">
+      <strong data-i18n="terms.summary.purchase.title">One-time purchase</strong>
+      <p data-i18n="terms.summary.purchase.desc">Premium is a one-time non-consumable unlock. There is no subscription.</p>
+    </div>
+    <div class="summary-card">
+      <strong data-i18n="privacy.summary.local.title">Local save data</strong>
+      <p data-i18n="privacy.summary.local.desc">Progress, settings, and statistics stay on your device unless you export them.</p>
+    </div>
+  </div>
 
-  <p><strong>How do I back up my progress?</strong></p>
-  <p>Go to Settings > Data section > tap "Export Save Data". Copy the text and save it somewhere safe. To restore, go to Settings > "Import Save Data" and paste it back.</p>
+  <section class="section">
+    <div class="faq-list">
+      <div class="faq-item">
+        <h2 data-i18n="support.restore.title">How do I restore my purchase?</h2>
+        <p data-i18n="support.restore.body">Go to Settings &gt; Premium section &gt; tap Restore Purchases. This will restore your Premium status on any device signed into the same Apple ID.</p>
+      </div>
 
-  <p><strong>I lost my progress after an update.</strong></p>
-  <p>Game progress is stored locally on your device. If you previously exported your save data, you can import it to restore your progress. Unfortunately, if no backup was made, progress cannot be recovered.</p>
+      <div class="faq-item">
+        <h2 data-i18n="support.backup.title">How do I back up my progress?</h2>
+        <p data-i18n="support.backup.body">Go to Settings &gt; Data section &gt; tap Export Save Data. Save the text somewhere safe. To restore, go to Import Save Data and paste it back.</p>
+      </div>
 
-  <p><strong>How do I remove ads?</strong></p>
-  <p>Purchase Tessera Premium ($5.99) from the Premium section in Settings. This is a one-time purchase that permanently removes all advertisements.</p>
+      <div class="faq-item">
+        <h2 data-i18n="support.progress.title">I lost my progress after an update.</h2>
+        <p data-i18n="support.progress.body">Game progress is stored locally on your device. If you previously exported save data, you can import it. Without a backup, progress cannot be recovered.</p>
+      </div>
 
-  <p><strong>What are the three puzzle types?</strong></p>
-  <p><strong>Logic:</strong> Draw territories where no number repeats. <strong>Chroma:</strong> Mix primary colors to match target shades. <strong>Equate:</strong> Group numbers that combine via math operations to hit a target.</p>
-</div>
+      <div class="faq-item">
+        <h2 data-i18n="support.ads.title">How do I remove ads?</h2>
+        <p data-i18n="support.ads.body">Purchase Tessera Premium from the Premium section in Settings. This is a one-time purchase that permanently removes advertisements.</p>
+      </div>
 
-<div class="footer">
-  <p><a href="../privacy/">Privacy Policy</a> | <a href="../terms/">Terms of Service</a></p>
-  <p>&copy; 2026 Tessera: The Mosaic Puzzle. All rights reserved.</p>
-</div>
+      <div class="faq-item">
+        <h2 data-i18n="support.modes.title">What are the three puzzle types?</h2>
+        <p data-i18n="support.modes.body">Logic: draw territories where no number repeats. Chroma: mix colors to match a target. Equate: group numbers with operations to hit a value.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="footer-brand">
+    <strong>Tessera</strong>
+    <span data-i18n="footer.identity">Tessera is an independent mobile game by Gaborandi.</span>
+  </div>
+  <div class="footer-links">
+    <a href="../" data-i18n="nav.home">Home</a>
+    <a href="../privacy/" data-i18n="nav.privacy">Privacy Policy</a>
+    <a href="../terms/" data-i18n="nav.terms">Terms of Service</a>
+    <p data-i18n="footer.copy">&copy; 2026 Gaborandi. Tessera: The Mosaic Puzzle. All rights reserved.</p>
+  </div>
+</footer>
+<script src="../assets/site.js"></script>
 </body>
 </html>
