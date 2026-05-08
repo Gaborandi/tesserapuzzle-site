@@ -15,6 +15,14 @@ Live site: https://gaborandi.github.io/tesserapuzzle-site/
 - `assets/site.js` - lightweight language selector and localized page copy
 - `assets/legal.css` - shared legal/support page styling
 
+## Localization
+
+The site supports the same broad language set as the newer Gaborandi launch pages:
+
+`en`, `ar`, `es`, `fr`, `de`, `pt`, `it`, `ja`, `ko`, `zh`, `ru`, `tr`, `hi`, `id`, `nl`, `pl`, `sv`, `vi`.
+
+Arabic is right-to-left. English remains the legal source of truth. Long legal clauses may fall back to English where a localized convenience translation is not provided.
+
 ## Product Positioning
 
 Tessera is a mobile territory puzzle game built around one clear mechanic: divide the board into connected regions that satisfy a rule.
