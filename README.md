@@ -12,6 +12,8 @@ Live site: https://gaborandi.github.io/tesserapuzzle-site/
 - `support/` - support and contact page
 - `privacy.html` - redirect kept for App Store compatibility
 - `appstore-metadata.md` - App Store copy and support metadata
+- `assets/site.js` - lightweight language selector and localized page copy
+- `assets/legal.css` - shared legal/support page styling
 
 ## Product Positioning
 
@@ -24,8 +26,11 @@ Tessera is a mobile territory puzzle game built around one clear mechanic: divid
 The public copy should stay consistent with the game:
 
 - Use `$5.99` for the one-time premium unlock.
+- Do not call Premium a subscription. Use "Premium users" or "Premium purchasers."
+- If mentioning Hint Pack, clarify that it is optional for non-premium players and that Premium already includes unlimited hints.
 - Describe generated content as deterministic or part of a curated progression.
 - Keep unfinished modes out of public launch copy.
+- Include the publisher identity: "Tessera is an independent mobile game by Gaborandi."
 
 ## Launch Links
 
