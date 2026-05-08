@@ -1390,14 +1390,13 @@
 
   function setupSelectors() {
     document.querySelectorAll(".language-select").forEach(function (select) {
-      if (!select.options.length) {
-        Object.keys(LANGUAGES).forEach(function (lang) {
-          var option = document.createElement("option");
-          option.value = lang;
-          option.textContent = LANGUAGES[lang];
-          select.appendChild(option);
-        });
-      }
+      select.textContent = "";
+      Object.keys(LANGUAGES).forEach(function (lang) {
+        var option = document.createElement("option");
+        option.value = lang;
+        option.textContent = LANGUAGES[lang];
+        select.appendChild(option);
+      });
       select.addEventListener("change", function () {
         applyLanguage(select.value, true);
       });
