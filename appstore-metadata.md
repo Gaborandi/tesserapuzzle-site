@@ -18,7 +18,7 @@ Free (with in-app purchases)
 
 ## In-App Purchases
 - Tessera Premium — $5.99 (removes ads, unlimited hints, unlimited plays, exclusive themes)
-- Hint Pack — $0.99 (10 bonus hints)
+- Hint Pack — $0.99 (optional 10 bonus hints for non-premium players; Premium includes unlimited hints)
 
 ## Keywords (100 chars max)
 puzzle,territory,mosaic,sudoku,logic,color mixing,math,brain teaser,daily challenge,strategy
@@ -59,7 +59,7 @@ DESIGNED WITH CARE
 - Drag or tap — play your way
 
 FREE TO PLAY, FAIR MONETIZATION
-Play every mode for free with ads. Go Premium once ($5.99) to remove all ads, unlock unlimited hints, unlimited daily plays, and exclusive color themes. No subscriptions. No pay-to-win.
+Play every mode for free with ads. Go Premium once ($5.99) to remove all ads, unlock unlimited hints, unlimited daily plays, and exclusive color themes. Optional hint packs may be offered for non-premium players only. No subscriptions. No pay-to-win.
 
 ## Promotional Text (170 chars, can be updated without review)
 Three puzzle types. 600 levels. Daily challenges. Draw territories where numbers don't repeat, colors mix perfectly, or equations balance.
