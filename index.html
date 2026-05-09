@@ -6,9 +6,18 @@
 <title>Tessera &mdash; The Mosaic Puzzle</title>
 <meta name="description" content="A premium iOS territory puzzle with Logic, Chroma, and Equate modes, 600 deterministic Journey levels, daily challenges, and elegant mosaic strategy.">
 <meta name="theme-color" content="#0a0a16">
+<link rel="canonical" href="https://gaborandi.github.io/tesserapuzzle-site/">
+<link rel="icon" href="assets/tessera-icon.png">
+<link rel="preload" as="image" href="assets/tessera-chroma.png">
 <meta property="og:title" content="Tessera">
 <meta property="og:description" content="Logic becomes territory in a premium mobile mosaic puzzle.">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://gaborandi.github.io/tesserapuzzle-site/">
+<meta property="og:image" content="https://gaborandi.github.io/tesserapuzzle-site/assets/tessera-icon.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Tessera">
+<meta name="twitter:description" content="Logic becomes territory in a premium mobile mosaic puzzle.">
+<meta name="twitter:image" content="https://gaborandi.github.io/tesserapuzzle-site/assets/tessera-icon.png">
 <style>
   :root {
     --bg: #0a0a16;
@@ -225,6 +234,11 @@
     color: white;
     background: linear-gradient(135deg, var(--violet), #9061f9);
     box-shadow: 0 14px 38px rgba(124,111,255,0.28);
+  }
+
+  .store-button.inert {
+    cursor: default;
+    user-select: none;
   }
 
   .store-button svg { width: 22px; height: 22px; }
@@ -734,6 +748,32 @@
     border-bottom: 1px solid var(--line);
   }
 
+  .launch-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 22px;
+  }
+
+  .launch-links a {
+    display: inline-flex;
+    min-height: 42px;
+    align-items: center;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 0 13px;
+    color: var(--text);
+    background: rgba(255,255,255,0.055);
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 13px;
+  }
+
+  .launch-links a:hover {
+    border-color: rgba(167,139,250,0.44);
+    background: rgba(167,139,250,0.12);
+  }
+
   footer {
     width: min(1120px, calc(100% - 32px));
     margin: 0 auto;
@@ -864,6 +904,20 @@
         <option value="ar">العربية</option>
         <option value="es">Español</option>
         <option value="fr">Français</option>
+        <option value="de">Deutsch</option>
+        <option value="pt">Português</option>
+        <option value="it">Italiano</option>
+        <option value="ja">日本語</option>
+        <option value="ko">한국어</option>
+        <option value="zh">简体中文</option>
+        <option value="ru">Русский</option>
+        <option value="tr">Türkçe</option>
+        <option value="hi">हिन्दी</option>
+        <option value="id">Bahasa Indonesia</option>
+        <option value="nl">Nederlands</option>
+        <option value="pl">Polski</option>
+        <option value="sv">Svenska</option>
+        <option value="vi">Tiếng Việt</option>
       </select>
     </div>
   </nav>
@@ -877,10 +931,10 @@
       <p class="tagline" data-i18n="home.tagline">Logic becomes territory.</p>
       <p class="subtitle" data-i18n="home.subtitle">Partition each board into connected regions that satisfy a rule. Tessera turns clean spatial logic into a mosaic puzzle across Logic, Chroma, Equate, daily challenges, and 600 deterministic Journey levels.</p>
       <div class="actions">
-        <a href="#" class="store-button" aria-disabled="true">
+        <span class="store-button inert" role="status">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
           <span data-i18n="home.appstore">App Store link coming soon</span>
-        </a>
+        </span>
         <a class="secondary-button" href="#modes" data-i18n="home.explore">Explore modes</a>
       </div>
       <dl class="trust-strip" aria-label="Game summary">
@@ -899,7 +953,7 @@
 
       <div class="phone">
         <div class="phone-screen">
-          <img class="hero-shot" src="assets/tessera-chroma.png" alt="Tessera Chroma puzzle board on iPhone">
+          <img class="hero-shot" src="assets/tessera-chroma.png" alt="Tessera Chroma puzzle board on iPhone" decoding="async" fetchpriority="high">
         </div>
       </div>
     </div>
@@ -918,10 +972,10 @@
           <h3 data-i18n="home.logic.title">Reverse Sudoku</h3>
           <p data-i18n="home.logic.desc">Draw equal-size connected regions where no number repeats. Clean, readable, and immediately understandable.</p>
           <div class="mini-board" aria-hidden="true">
-            <span class="v">1</span><span class="v">3</span><span class="b">2</span><span class="b">4</span>
-            <span class="g">4</span><span class="v">2</span><span class="b">1</span><span class="a">3</span>
-            <span class="g">2</span><span class="g">1</span><span class="a">4</span><span class="a">1</span>
-            <span class="r">3</span><span class="r">4</span><span class="r">2</span><span class="a">2</span>
+            <span class="v">1</span><span class="v">2</span><span class="b">3</span><span class="b">4</span>
+            <span class="v">3</span><span class="v">4</span><span class="g">1</span><span class="b">2</span>
+            <span class="g">4</span><span class="g">2</span><span class="g">3</span><span class="b">1</span>
+            <span class="a">4</span><span class="a">2</span><span class="a">1</span><span class="a">3</span>
           </div>
         </div>
       </article>
@@ -962,19 +1016,19 @@
     </div>
     <div class="shot-grid">
       <figure class="shot-card">
-        <img src="assets/tessera-home.png" alt="Tessera home screen with Journey, Daily Challenge, Free Play, and challenge modes">
+        <img src="assets/tessera-home.png" alt="Tessera home screen with Journey, Daily Challenge, Free Play, and challenge modes" loading="lazy" decoding="async">
         <figcaption><strong data-i18n="home.shot.home.title">Calm Home</strong><span data-i18n="home.shot.home.desc">Main modes first, secondary challenges lower.</span></figcaption>
       </figure>
       <figure class="shot-card">
-        <img src="assets/tessera-chroma.png" alt="Tessera Chroma mode board with color targets">
+        <img src="assets/tessera-chroma.png" alt="Tessera Chroma mode board with color targets" loading="lazy" decoding="async">
         <figcaption><strong data-i18n="home.shot.chroma.title">Chroma</strong><span data-i18n="home.shot.chroma.desc">Color-mix targets with the same board rhythm.</span></figcaption>
       </figure>
       <figure class="shot-card">
-        <img src="assets/tessera-equate.png" alt="Tessera Equate mode board with equation targets">
+        <img src="assets/tessera-equate.png" alt="Tessera Equate mode board with equation targets" loading="lazy" decoding="async">
         <figcaption><strong data-i18n="home.shot.equate.title">Equate</strong><span data-i18n="home.shot.equate.desc">Math targets presented as premium variants.</span></figcaption>
       </figure>
       <figure class="shot-card">
-        <img src="assets/tessera-daily.png" alt="Tessera Daily Challenge board">
+        <img src="assets/tessera-daily.png" alt="Tessera Daily Challenge board" loading="lazy" decoding="async">
         <figcaption><strong data-i18n="home.shot.daily.title">Daily</strong><span data-i18n="home.shot.daily.desc">Repeatable challenge screens for launch.</span></figcaption>
       </figure>
     </div>
@@ -1038,6 +1092,11 @@
     <div>
       <p class="kicker" data-i18n="home.launch.kicker">Trust And Launch</p>
       <h2 data-i18n="home.launch.title">Public links are ready for App Store review.</h2>
+      <div class="launch-links" aria-label="Public launch links">
+        <a href="privacy/" data-i18n="nav.privacy">Privacy Policy</a>
+        <a href="terms/" data-i18n="nav.terms">Terms of Service</a>
+        <a href="support/" data-i18n="nav.support">Support</a>
+      </div>
     </div>
     <div class="proof-list">
       <p data-i18n-html="home.launch.p1"><strong>Privacy:</strong> clear data, ads, consent, purchases, analytics, and local save language.</p>
