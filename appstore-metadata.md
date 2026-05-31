@@ -17,8 +17,8 @@ Secondary: Games > Board
 Free (with in-app purchases)
 
 ## In-App Purchases
-- Tessera Premium — $5.99 (removes ads, unlimited hints, unlimited plays, exclusive themes)
-- Hint Pack — $0.99 (optional 10 bonus hints for non-premium players; Premium includes unlimited hints)
+- Tessera Premium — $5.99 (removes ads, keeps hints available within the per-puzzle cap, unlimited plays, exclusive themes)
+- Hint Pack — $0.99 (optional 10 bonus hints for non-premium players; Premium includes the full per-puzzle hint allowance)
 
 ## Keywords (100 chars max)
 puzzle,territory,mosaic,sudoku,logic,color mixing,math,brain teaser,daily challenge,strategy
@@ -42,7 +42,7 @@ Numbers fill the grid. Group them into territories where they add, multiply, sub
 Five worlds per puzzle type, from 4x4 beginner grids to challenging 8x8 masterpieces. Earn up to 3 stars per level. Unlock new worlds as you progress.
 
 DAILY CHALLENGES
-A fresh puzzle every day — same for everyone. Build your streak. Compare with friends.
+A fresh date-based puzzle every day. Players on the same date get the same challenge. Build your streak. Compare with friends.
 
 CHALLENGE MODES
 - Territory Rush: Race a simulated AI opponent
@@ -54,12 +54,12 @@ DESIGNED WITH CARE
 - Rich haptic feedback on every interaction
 - Synthesized sound effects — no audio files needed
 - Full color-blind mode with letter overlays
-- VoiceOver and keyboard accessible
+- Accessibility-minded layout with labeled controls and large touch targets
 - Dark theme optimized for OLED displays
 - Drag or tap — play your way
 
 FREE TO PLAY, FAIR MONETIZATION
-Play every mode for free with ads. Go Premium once ($5.99) to remove all ads, unlock unlimited hints, unlimited daily plays, and exclusive color themes. Optional hint packs may be offered for non-premium players only. No subscriptions. No pay-to-win.
+Play with ads and optional daily limits. Go Premium once ($5.99) to remove all ads, keep hints available within the per-puzzle cap, unlock unlimited daily plays, and unlock exclusive color themes. Optional hint packs may be offered for non-premium players only. No subscriptions. No pay-to-win.
 
 ## Promotional Text (170 chars, can be updated without review)
 Three puzzle types. 600 levels. Daily challenges. Draw territories where numbers don't repeat, colors mix perfectly, or equations balance.
@@ -76,6 +76,11 @@ https://gaborandi.github.io/tesserapuzzle-site/privacy/
 ---
 
 # Localized Metadata
+
+These localized drafts are not ready to paste into App Store Connect without
+review. Before launch, regenerate or human-review each localization from the
+final English source so pricing, Premium, Hint Pack, ads/consent, daily limits,
+privacy, and accessibility claims match the submitted binary.
 
 ## Spanish (ES)
 
