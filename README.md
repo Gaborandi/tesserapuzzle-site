@@ -59,8 +59,9 @@ This repository is published with GitHub Pages from the `main` branch. Updates a
 
 When app screenshots or grid colors change, replace the public images in `assets/`
 before publishing so the website matches the current App Store and TestFlight
-build. Re-check the live Privacy Policy URL after each legal or monetization
-change:
+build. If the filenames stay the same, bump the `?v=` query strings in
+`index.html` so browsers cannot keep showing cached old screenshots. Re-check
+the live Privacy Policy URL after each legal or monetization change:
 
 - Website: https://gaborandi.github.io/tesserapuzzle-site/
 - Privacy: https://gaborandi.github.io/tesserapuzzle-site/privacy/
