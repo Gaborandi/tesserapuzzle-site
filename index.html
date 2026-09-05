@@ -1,1120 +1,212 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tessera &mdash; The Mosaic Puzzle</title>
-<meta name="description" content="A premium mobile territory puzzle with Logic, Chroma, and Equate modes, 600 deterministic Journey levels, daily challenges, and elegant mosaic strategy.">
-<meta name="theme-color" content="#0a0a16">
-<link rel="canonical" href="https://gaborandi.github.io/tesserapuzzle-site/">
-<link rel="icon" href="assets/tessera-icon.png">
-<link rel="preload" as="image" href="assets/tessera-chroma.png?v=20260601b">
-<meta property="og:title" content="Tessera">
-<meta property="og:description" content="Logic becomes territory in a premium mobile mosaic puzzle.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://gaborandi.github.io/tesserapuzzle-site/">
-<meta property="og:image" content="https://gaborandi.github.io/tesserapuzzle-site/assets/tessera-icon.png">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Tessera">
-<meta name="twitter:description" content="Logic becomes territory in a premium mobile mosaic puzzle.">
-<meta name="twitter:image" content="https://gaborandi.github.io/tesserapuzzle-site/assets/tessera-icon.png">
-<style>
-  :root {
-    --bg: #0a0a16;
-    --surface: #141425;
-    --surface2: #1e1e35;
-    --surface3: #282845;
-    --text: #f5f3ff;
-    --muted: #b8b4d6;
-    --dim: #777292;
-    --violet: #7c6fff;
-    --lavender: #a78bfa;
-    --blue: #60a5fa;
-    --emerald: #34d399;
-    --amber: #fbbf24;
-    --rose: #f472b6;
-    --line: rgba(167, 139, 250, 0.18);
-  }
-
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    min-height: 100vh;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    color: var(--text);
-    background:
-      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px),
-      linear-gradient(180deg, #0a0a16 0%, #101024 48%, #090914 100%);
-    background-size: 34px 34px, 34px 34px, auto;
-    overflow-x: hidden;
-  }
-
-  a { color: inherit; }
-
-  .skip-link {
-    position: absolute;
-    left: 18px;
-    top: -52px;
-    z-index: 20;
-    padding: 10px 14px;
-    border-radius: 8px;
-    color: white;
-    background: var(--violet);
-    text-decoration: none;
-    font-weight: 800;
-  }
-
-  .skip-link:focus { top: 18px; }
-
-  .site-header {
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    background: rgba(10,10,22,0.76);
-    border-bottom: 1px solid rgba(167,139,250,0.12);
-    backdrop-filter: blur(18px);
-  }
-
-  .site-nav {
-    width: min(1120px, calc(100% - 32px));
-    margin: 0 auto;
-    padding: 16px 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 18px;
-  }
-
-  .brand {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    text-decoration: none;
-  }
-
-  .mark {
-    width: 34px;
-    height: 34px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4px;
-    padding: 3px;
-    border-radius: 10px;
-    background: rgba(255,255,255,0.08);
-    box-shadow: 0 0 0 1px rgba(255,255,255,0.08), 0 10px 28px rgba(0,0,0,0.34);
-  }
-
-  .mark span { border-radius: 5px; }
-  .mark span:nth-child(1) { background: linear-gradient(145deg, #c4b5fd, #7c3aed); }
-  .mark span:nth-child(2) { background: linear-gradient(145deg, #93c5fd, #2563eb); }
-  .mark span:nth-child(3) { background: linear-gradient(145deg, #6ee7b7, #059669); }
-  .mark span:nth-child(4) { background: linear-gradient(145deg, #fde68a, #d97706); }
-
-  .brand-word {
-    font-size: 14px;
-    letter-spacing: 3px;
-    font-weight: 900;
-  }
-
-  .nav-links {
-    display: flex;
-    gap: 8px;
-    align-items: center;
-  }
-
-  .nav-links a {
-    text-decoration: none;
-    color: var(--muted);
-    font-size: 13px;
-    padding: 8px 10px;
-    border-radius: 8px;
-  }
-
-  .nav-links a:hover { color: var(--text); background: rgba(255,255,255,0.06); }
-
-  .language-select {
-    min-height: 36px;
-    border: 1px solid rgba(167,139,250,0.26);
-    border-radius: 9px;
-    color: var(--text);
-    background: rgba(20,20,37,0.88);
-    padding: 0 10px;
-    font: inherit;
-    font-size: 13px;
-    font-weight: 750;
-  }
-
-  .hero {
-    width: min(1120px, calc(100% - 32px));
-    min-height: calc(100vh - 72px);
-    margin: 0 auto;
-    padding: 54px 0 46px;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(310px, 430px);
-    align-items: center;
-    gap: clamp(36px, 6vw, 78px);
-  }
-
-  .eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    color: var(--lavender);
-    font-size: 12px;
-    line-height: 1;
-    font-weight: 800;
-    letter-spacing: 2.8px;
-    text-transform: uppercase;
-    margin-bottom: 18px;
-  }
-
-  .eyebrow::before {
-    content: "";
-    width: 28px;
-    height: 2px;
-    border-radius: 999px;
-    background: linear-gradient(90deg, var(--violet), var(--emerald));
-  }
-
-  h1 {
-    max-width: 680px;
-    font-size: clamp(54px, 10vw, 108px);
-    line-height: 0.92;
-    letter-spacing: 0;
-    font-weight: 950;
-    background: linear-gradient(135deg, #f5f3ff 0%, #b9a7ff 38%, #73d8ff 68%, #f8d776 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-
-  .tagline {
-    margin-top: 18px;
-    max-width: 620px;
-    color: #d6d0ee;
-    font-size: clamp(20px, 3vw, 30px);
-    line-height: 1.28;
-    font-weight: 750;
-  }
-
-  .subtitle {
-    margin-top: 18px;
-    max-width: 590px;
-    color: var(--muted);
-    font-size: 17px;
-    line-height: 1.75;
-  }
-
-  .actions {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 12px;
-    margin-top: 34px;
-  }
-
-  .store-button,
-  .secondary-button {
-    display: inline-flex;
-    min-height: 48px;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    border-radius: 10px;
-    padding: 0 18px;
-    text-decoration: none;
-    font-weight: 850;
-    font-size: 14px;
-  }
-
-  .store-button {
-    color: white;
-    background: linear-gradient(135deg, var(--violet), #9061f9);
-    box-shadow: 0 14px 38px rgba(124,111,255,0.28);
-  }
-
-  .store-button.inert {
-    cursor: default;
-    user-select: none;
-  }
-
-  .store-button svg { width: 22px; height: 22px; }
-
-  .secondary-button {
-    color: var(--text);
-    background: rgba(255,255,255,0.06);
-    border: 1px solid var(--line);
-  }
-
-  .stats-strip {
-    margin-top: 34px;
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    max-width: 520px;
-    border: 1px solid var(--line);
-    border-radius: 14px;
-    overflow: hidden;
-    background: rgba(20,20,37,0.72);
-  }
-
-  .stat {
-    padding: 16px;
-    border-right: 1px solid var(--line);
-  }
-
-  .stat:last-child { border-right: 0; }
-  .stat strong { display: block; font-size: 24px; letter-spacing: 0; }
-  .stat span { color: var(--dim); font-size: 12px; text-transform: uppercase; letter-spacing: 1.5px; }
-
-  .trust-strip {
-    margin: 38px 0 0;
-    max-width: 620px;
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 12px;
-  }
-
-  .trust-strip div {
-    padding-top: 13px;
-    border-top: 2px solid rgba(245,243,255,0.86);
-  }
-
-  .trust-strip dt {
-    font-size: 13px;
-    font-weight: 900;
-  }
-
-  .trust-strip dd {
-    margin: 4px 0 0;
-    color: var(--muted);
-    font-size: 13px;
-    line-height: 1.35;
-  }
-
-  .device-stage {
-    position: relative;
-    display: grid;
-    place-items: center;
-    min-height: 620px;
-  }
-
-  .theme-rail {
-    position: absolute;
-    inset: 38px 0 auto auto;
-    width: 118px;
-    display: grid;
-    gap: 10px;
-    z-index: 1;
-  }
-
-  .theme-pill {
-    padding: 10px;
-    border: 1px solid rgba(255,255,255,0.12);
-    border-radius: 12px;
-    background: rgba(20,20,37,0.74);
-    box-shadow: 0 12px 34px rgba(0,0,0,0.34);
-  }
-
-  .theme-pill span {
-    display: block;
-    height: 16px;
-    border-radius: 6px;
-    margin-bottom: 7px;
-  }
-
-  .theme-pill small {
-    color: var(--muted);
-    font-size: 11px;
-    font-weight: 700;
-  }
-
-  .phone {
-    position: relative;
-    width: min(330px, 82vw);
-    aspect-ratio: 390 / 844;
-    padding: 14px;
-    border-radius: 42px;
-    background: linear-gradient(145deg, #302f4c, #0b0b14 18%, #252541 100%);
-    box-shadow:
-      0 42px 90px rgba(0,0,0,0.52),
-      0 0 0 1px rgba(255,255,255,0.08),
-      inset 0 0 0 1px rgba(255,255,255,0.12);
-  }
-
-  .phone::before {
-    content: "";
-    position: absolute;
-    top: 10px;
-    left: 50%;
-    width: 92px;
-    height: 24px;
-    transform: translateX(-50%);
-    border-radius: 0 0 16px 16px;
-    background: #06060c;
-    z-index: 3;
-  }
-
-  .phone-screen {
-    height: 100%;
-    border-radius: 31px;
-    overflow: hidden;
-    background: #0a0a16;
-    border: 1px solid rgba(255,255,255,0.08);
-  }
-
-  .hero-shot {
-    width: 100%;
-    height: 100%;
-    display: block;
-    object-fit: cover;
-    object-position: top center;
-  }
-
-  .app-top {
-    padding: 46px 22px 18px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .app-title {
-    font-size: 18px;
-    font-weight: 950;
-    letter-spacing: 2px;
-    color: #f5f3ff;
-  }
-
-  .app-badge {
-    font-size: 10px;
-    letter-spacing: 1px;
-    color: #d8caff;
-    border: 1px solid rgba(167,139,250,0.34);
-    border-radius: 999px;
-    padding: 6px 8px;
-    background: rgba(124,111,255,0.16);
-  }
-
-  .phone-copy { padding: 0 22px; }
-  .phone-copy h2 { font-size: 25px; line-height: 1.08; letter-spacing: 0; }
-  .phone-copy p { margin-top: 8px; color: var(--muted); font-size: 12px; line-height: 1.5; }
-
-  .board {
-    width: calc(100% - 44px);
-    margin: 24px auto 16px;
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 5px;
-    padding: 8px;
-    border-radius: 18px;
-    background: rgba(255,255,255,0.08);
-    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08);
-  }
-
-  .cell {
-    aspect-ratio: 1;
-    border-radius: 9px;
-    display: grid;
-    place-items: center;
-    color: rgba(255,255,255,0.9);
-    font-weight: 900;
-    font-size: 15px;
-  }
-
-  .v { background: linear-gradient(145deg, #a78bfa, #7c3aed); }
-  .b { background: linear-gradient(145deg, #60a5fa, #2563eb); }
-  .g { background: linear-gradient(145deg, #34d399, #059669); }
-  .a { background: linear-gradient(145deg, #fbbf24, #d97706); color: #2b1a06; }
-  .r { background: linear-gradient(145deg, #f472b6, #db2777); }
-  .n { background: #1e1e35; color: #8d89a8; }
-
-  .target-row {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
-    padding: 0 22px;
-  }
-
-  .target {
-    min-height: 54px;
-    border-radius: 13px;
-    border: 1px solid rgba(255,255,255,0.1);
-    background: rgba(255,255,255,0.06);
-    padding: 10px;
-  }
-
-  .target strong { display: block; font-size: 13px; }
-  .target span { display: block; margin-top: 4px; color: var(--dim); font-size: 10px; }
-
-  .palette {
-    display: flex;
-    gap: 8px;
-    padding: 22px;
-    margin-top: auto;
-  }
-
-  .swatch {
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    box-shadow: 0 0 0 3px rgba(255,255,255,0.08);
-  }
-
-  .section {
-    width: min(1120px, calc(100% - 32px));
-    margin: 0 auto;
-    padding: 74px 0;
-  }
-
-  .section-head {
-    max-width: 720px;
-    margin-bottom: 30px;
-  }
-
-  .kicker {
-    color: var(--lavender);
-    font-size: 12px;
-    font-weight: 900;
-    letter-spacing: 2.4px;
-    text-transform: uppercase;
-    margin-bottom: 12px;
-  }
-
-  .section h2 {
-    font-size: clamp(32px, 5vw, 54px);
-    line-height: 1.02;
-    letter-spacing: 0;
-  }
-
-  .section-lede {
-    margin-top: 14px;
-    color: var(--muted);
-    font-size: 17px;
-    line-height: 1.68;
-  }
-
-  .mode-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-  }
-
-  .mode-card {
-    position: relative;
-    min-height: 360px;
-    border-radius: 18px;
-    overflow: hidden;
-    border: 1px solid var(--line);
-    background: linear-gradient(145deg, rgba(255,255,255,0.06), rgba(20,20,37,0.9));
-    box-shadow: 0 20px 56px rgba(0,0,0,0.26);
-  }
-
-  .mode-card::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background:
-      linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
-    background-size: 24px 24px;
-    pointer-events: none;
-  }
-
-  .mode-content {
-    position: relative;
-    z-index: 1;
-    padding: 24px;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .mode-label {
-    display: inline-flex;
-    width: fit-content;
-    border-radius: 999px;
-    padding: 7px 10px;
-    color: #fff;
-    font-size: 11px;
-    font-weight: 900;
-    letter-spacing: 1.6px;
-    text-transform: uppercase;
-    border: 1px solid rgba(255,255,255,0.16);
-    background: rgba(255,255,255,0.08);
-  }
-
-  .mode-card h3 {
-    margin-top: 18px;
-    font-size: 28px;
-    letter-spacing: 0;
-  }
-
-  .mode-card p {
-    margin-top: 10px;
-    color: var(--muted);
-    line-height: 1.55;
-    font-size: 14px;
-  }
-
-  .mini-board {
-    margin-top: auto;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 5px;
-    padding-top: 28px;
-  }
-
-  .mini-board span {
-    aspect-ratio: 1;
-    border-radius: 8px;
-    display: grid;
-    place-items: center;
-    font-size: 13px;
-    font-weight: 900;
-  }
-
-  .logic .mode-label { color: #dcd4ff; border-color: rgba(167,139,250,0.34); }
-  .chroma .mode-label { color: #d5f7ff; border-color: rgba(96,165,250,0.34); }
-  .equate .mode-label { color: #ffefc1; border-color: rgba(251,191,36,0.34); }
-
-  .challenge-band {
-    border: 1px solid var(--line);
-    border-radius: 22px;
-    background: linear-gradient(145deg, rgba(124,111,255,0.11), rgba(20,20,37,0.86));
-    padding: clamp(24px, 5vw, 42px);
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 28px;
-    align-items: center;
-  }
-
-  .shot-grid {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 16px;
-    align-items: start;
-  }
-
-  .shot-card {
-    position: relative;
-    border: 1px solid var(--line);
-    border-radius: 22px;
-    padding: 10px;
-    background:
-      linear-gradient(145deg, rgba(255,255,255,0.08), rgba(20,20,37,0.74));
-    box-shadow: 0 24px 60px rgba(0,0,0,0.28);
-    overflow: hidden;
-  }
-
-  .shot-card::before {
-    content: "";
-    position: absolute;
-    inset: -40% -20% auto;
-    height: 180px;
-    background: radial-gradient(circle, rgba(124,111,255,0.28), transparent 62%);
-    pointer-events: none;
-  }
-
-  .shot-card img {
-    position: relative;
-    width: 100%;
-    display: block;
-    border-radius: 16px;
-    aspect-ratio: 442 / 960;
-    object-fit: cover;
-    object-position: top center;
-    background: #080811;
-    box-shadow: 0 0 0 1px rgba(255,255,255,0.08);
-  }
-
-  .shot-card figcaption {
-    position: relative;
-    padding: 14px 4px 4px;
-  }
-
-  .shot-card strong {
-    display: block;
-    font-size: 14px;
-  }
-
-  .shot-card span {
-    display: block;
-    margin-top: 4px;
-    color: var(--muted);
-    font-size: 12px;
-    line-height: 1.35;
-  }
-
-  .challenge-list {
-    display: grid;
-    gap: 10px;
-  }
-
-  .challenge-item {
-    display: grid;
-    grid-template-columns: 42px 1fr;
-    gap: 12px;
-    align-items: center;
-    padding: 13px;
-    border-radius: 13px;
-    background: rgba(255,255,255,0.055);
-    border: 1px solid rgba(255,255,255,0.08);
-  }
-
-  .challenge-icon {
-    width: 42px;
-    height: 42px;
-    border-radius: 12px;
-    display: grid;
-    place-items: center;
-    color: #080810;
-    font-weight: 950;
-  }
-
-  .challenge-item strong { display: block; font-size: 15px; }
-  .challenge-item span { display: block; margin-top: 3px; color: var(--muted); font-size: 13px; line-height: 1.35; }
-
-  .premium-grid {
-    display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    gap: 18px;
-  }
-
-  .panel {
-    border: 1px solid var(--line);
-    border-radius: 20px;
-    background: rgba(20,20,37,0.74);
-    padding: 28px;
-  }
-
-  .panel h3 {
-    font-size: 24px;
-    letter-spacing: 0;
-    margin-bottom: 12px;
-  }
-
-  .panel p,
-  .panel li {
-    color: var(--muted);
-    line-height: 1.65;
-  }
-
-  .panel ul {
-    list-style: none;
-    display: grid;
-    gap: 10px;
-    margin-top: 18px;
-  }
-
-  .panel li {
-    padding-left: 22px;
-    position: relative;
-  }
-
-  .panel li::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 10px;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--emerald);
-  }
-
-  .proof-list {
-    display: grid;
-    gap: 12px;
-  }
-
-  .proof-list p {
-    margin: 0;
-    padding: 18px 20px;
-    border-left: 4px solid var(--amber);
-    border-radius: 0 12px 12px 0;
-    background: rgba(255,255,255,0.055);
-    color: var(--muted);
-    line-height: 1.62;
-  }
-
-  .launch-band {
-    display: grid;
-    grid-template-columns: 0.8fr 1fr;
-    gap: 34px;
-    align-items: start;
-    border-top: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
-  }
-
-  .launch-links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 22px;
-  }
-
-  .launch-links a {
-    display: inline-flex;
-    min-height: 42px;
-    align-items: center;
-    border: 1px solid var(--line);
-    border-radius: 10px;
-    padding: 0 13px;
-    color: var(--text);
-    background: rgba(255,255,255,0.055);
-    text-decoration: none;
-    font-weight: 800;
-    font-size: 13px;
-  }
-
-  .launch-links a:hover {
-    border-color: rgba(167,139,250,0.44);
-    background: rgba(167,139,250,0.12);
-  }
-
-  footer {
-    width: min(1120px, calc(100% - 32px));
-    margin: 0 auto;
-    padding: 38px 0 48px;
-    color: var(--dim);
-    border-top: 1px solid var(--line);
-    display: flex;
-    justify-content: space-between;
-    gap: 18px;
-    flex-wrap: wrap;
-    font-size: 13px;
-  }
-
-  footer a {
-    color: var(--muted);
-    text-decoration: none;
-    margin-right: 14px;
-  }
-
-  footer a:hover { color: var(--text); }
-
-  .footer-identity {
-    max-width: 460px;
-    color: var(--muted);
-    line-height: 1.55;
-  }
-
-  .footer-identity strong {
-    display: block;
-    color: var(--text);
-    margin-bottom: 4px;
-  }
-
-  html[dir="rtl"] body { direction: rtl; }
-  html[dir="rtl"] .site-nav,
-  html[dir="rtl"] footer { direction: rtl; }
-  html[dir="rtl"] .eyebrow::before { order: 2; }
-  html[dir="rtl"] .panel li { padding-left: 0; padding-right: 22px; }
-  html[dir="rtl"] .panel li::before { left: auto; right: 0; }
-  html[dir="rtl"] footer a { margin-right: 0; margin-left: 14px; }
-
-  @media (prefers-reduced-motion: no-preference) {
-    .phone { animation: floatPhone 6s ease-in-out infinite; }
-    .cell:nth-child(3n) { animation: softPulse 4.5s ease-in-out infinite; }
-    .cell:nth-child(4n) { animation: softPulse 5.5s ease-in-out infinite; }
-    @keyframes floatPhone {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
-    @keyframes softPulse {
-      0%, 100% { filter: brightness(1); }
-      50% { filter: brightness(1.15); }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tessera: Logic, Color &amp; Math Puzzle</title>
+  <meta name="description" content="Solve connected territory puzzles through numbers, color mixing, and arithmetic. Tessera includes 600 deterministic Journey levels, daily challenges, and offline play.">
+  <meta name="theme-color" content="#0b0d12">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-video-preview:-1">
+  <meta name="apple-itunes-app" content="app-id=6773765192">
+  <link rel="canonical" href="https://gaborandi.github.io/tesserapuzzle-site/">
+  <link rel="icon" href="assets/tessera-icon.png" sizes="256x256">
+  <link rel="apple-touch-icon" href="assets/tessera-icon.png">
+  <link rel="preload" as="image" href="assets/tessera-home.webp?v=20260905" type="image/webp" fetchpriority="high">
+  <link rel="stylesheet" href="assets/home.css?v=20260905c">
+
+  <meta property="og:title" content="Tessera: The Mosaic Puzzle">
+  <meta property="og:description" content="Three ways to solve one mosaic: logic, color, and arithmetic.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://gaborandi.github.io/tesserapuzzle-site/">
+  <meta property="og:image" content="https://gaborandi.github.io/tesserapuzzle-site/assets/tessera-social-preview.png?v=20260905">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Tessera Logic, Chroma, and Equate gameplay">
+  <meta property="og:site_name" content="Tessera">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Tessera: The Mosaic Puzzle">
+  <meta name="twitter:description" content="Three ways to solve one mosaic: logic, color, and arithmetic.">
+  <meta name="twitter:image" content="https://gaborandi.github.io/tesserapuzzle-site/assets/tessera-social-preview.png?v=20260905">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": ["MobileApplication", "VideoGame"],
+    "name": "Tessera: The Mosaic Puzzle",
+    "alternateName": "Tessera",
+    "description": "A connected territory puzzle with Logic, Chroma, and Equate modes, 600 deterministic Journey levels, daily challenges, and offline play.",
+    "applicationCategory": "GameApplication",
+    "applicationSubCategory": "Puzzle Game",
+    "operatingSystem": "iOS 15 or later",
+    "url": "https://gaborandi.github.io/tesserapuzzle-site/",
+    "image": "https://gaborandi.github.io/tesserapuzzle-site/assets/tessera-icon.png",
+    "screenshot": [
+      "https://gaborandi.github.io/tesserapuzzle-site/assets/tessera-home.png",
+      "https://gaborandi.github.io/tesserapuzzle-site/assets/tessera-chroma.png",
+      "https://gaborandi.github.io/tesserapuzzle-site/assets/tessera-equate.png"
+    ],
+    "author": {
+      "@type": "Organization",
+      "name": "Gaborandi"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
     }
   }
-
-  @media (max-width: 900px) {
-    .hero {
-      min-height: auto;
-      grid-template-columns: 1fr;
-      padding-top: 42px;
-    }
-    .device-stage {
-      min-height: 560px;
-    }
-    .theme-rail { right: 6px; top: 18px; }
-    .mode-grid,
-    .shot-grid,
-    .challenge-band,
-    .premium-grid,
-    .launch-band {
-      grid-template-columns: 1fr;
-    }
-    .shot-grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-  }
-
-  @media (max-width: 620px) {
-    .site-nav {
-      align-items: flex-start;
-      flex-direction: column;
-    }
-    .nav-links {
-      width: 100%;
-      overflow-x: auto;
-      padding-bottom: 4px;
-    }
-    .hero { padding-bottom: 28px; }
-    .stats-strip { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-    .trust-strip { grid-template-columns: 1fr; }
-    .stat { padding: 12px 10px; border-bottom: 0; border-right: 1px solid var(--line); }
-    .stat:last-child { border-right: 0; }
-    .stat strong { font-size: 20px; }
-    .stat span { font-size: 10px; letter-spacing: 1px; }
-    .theme-rail {
-      position: static;
-      width: min(330px, 82vw);
-      grid-template-columns: repeat(3, 1fr);
-      margin-top: 14px;
-      order: 2;
-    }
-    .device-stage { min-height: auto; }
-    .section { padding: 54px 0; }
-    .shot-grid { grid-template-columns: 1fr; }
-    .panel { padding: 22px; }
-    footer { display: block; }
-    footer p + p { margin-top: 14px; }
-  }
-</style>
+  </script>
 </head>
 <body>
-<a class="skip-link" href="#main">Skip to content</a>
-<header class="site-header">
-  <nav class="site-nav" aria-label="Primary">
-    <a class="brand" href="./" aria-label="Tessera home">
-      <span class="mark" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
-      <span class="brand-word">TESSERA</span>
-    </a>
-    <div class="nav-links">
-      <a href="#modes" data-i18n="nav.modes">Modes</a>
-      <a href="#screens" data-i18n="nav.look">Look</a>
-      <a href="#challenge" data-i18n="nav.challenge">Challenge</a>
-      <a href="#premium" data-i18n="nav.premium">Premium</a>
-      <a href="#launch" data-i18n="nav.trust">Trust</a>
-      <a href="support/" data-i18n="nav.support">Support</a>
-      <select class="language-select" aria-label="Language">
-        <option value="en">English</option>
-        <option value="ar">العربية</option>
-        <option value="es">Español</option>
-        <option value="fr">Français</option>
-        <option value="de">Deutsch</option>
-        <option value="pt">Português</option>
-        <option value="it">Italiano</option>
-        <option value="ja">日本語</option>
-        <option value="ko">한국어</option>
-        <option value="zh">简体中文</option>
-        <option value="ru">Русский</option>
-        <option value="tr">Türkçe</option>
-        <option value="hi">हिन्दी</option>
-        <option value="id">Bahasa Indonesia</option>
-        <option value="nl">Nederlands</option>
-        <option value="pl">Polski</option>
-        <option value="sv">Svenska</option>
-        <option value="vi">Tiếng Việt</option>
-      </select>
-    </div>
-  </nav>
-</header>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-<main id="main">
-  <section class="hero">
-    <div>
-      <p class="eyebrow" data-i18n="home.eyebrow">Premium Indie Puzzle</p>
-      <h1 data-i18n="home.title">Tessera</h1>
-      <p class="tagline" data-i18n="home.tagline">Logic becomes territory.</p>
-      <p class="subtitle" data-i18n="home.subtitle">Partition each board into connected regions that satisfy a rule. Tessera turns clean spatial logic into a mosaic puzzle across Logic, Chroma, Equate, daily challenges, and 600 deterministic Journey levels.</p>
-      <div class="actions">
-        <span class="store-button inert" role="status">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-          <span data-i18n="home.appstore">Store links coming soon</span>
-        </span>
-        <a class="secondary-button" href="#modes" data-i18n="home.explore">Explore modes</a>
-      </div>
-      <dl class="trust-strip" aria-label="Game summary">
-        <div><dt data-i18n="home.stat.levels.title">600 levels</dt><dd data-i18n="home.stat.levels.desc">Deterministic Journey progression</dd></div>
-        <div><dt data-i18n="home.stat.unlock.title">One unlock</dt><dd data-i18n="home.stat.unlock.desc">$5.99 premium, no subscription</dd></div>
-        <div><dt data-i18n="home.stat.local.title">Local-first</dt><dd data-i18n="home.stat.local.desc">Private save data and clear support links</dd></div>
-      </dl>
-    </div>
-
-    <div class="device-stage" aria-label="Tessera gameplay preview">
-      <div class="theme-rail" aria-hidden="true">
-        <div class="theme-pill"><span style="background:linear-gradient(90deg,#a78bfa,#60a5fa,#34d399,#fbbf24);"></span><small>Classic</small></div>
-        <div class="theme-pill"><span style="background:linear-gradient(90deg,#38bdf8,#06b6d4,#0ea5e9,#22d3ee);"></span><small>Ocean</small></div>
-        <div class="theme-pill"><span style="background:linear-gradient(90deg,#86efac,#22c55e,#14b8a6,#facc15);"></span><small>Forest</small></div>
-      </div>
-
-      <div class="phone">
-        <div class="phone-screen">
-          <img class="hero-shot" src="assets/tessera-chroma.png?v=20260601b" alt="Tessera Chroma puzzle board on iPhone" decoding="async" fetchpriority="high">
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="modes">
-    <div class="section-head">
-      <p class="kicker" data-i18n="home.modes.kicker">The Core Idea</p>
-      <h2 data-i18n="home.modes.title">A region is correct only when its shape and rule both hold.</h2>
-      <p class="section-lede" data-i18n="home.modes.lede">Every mode asks the same elegant question: which cells belong together? The answer changes when the rule becomes numbers, color, or exact equations.</p>
-    </div>
-    <div class="mode-grid">
-      <article class="mode-card logic">
-        <div class="mode-content">
-          <span class="mode-label" data-i18n="home.logic.label">Logic</span>
-          <h3 data-i18n="home.logic.title">Reverse Sudoku</h3>
-          <p data-i18n="home.logic.desc">Draw equal-size connected regions where no number repeats. Clean, readable, and immediately understandable.</p>
-          <div class="mini-board" aria-hidden="true">
-            <span class="v">1</span><span class="v">2</span><span class="b">3</span><span class="b">4</span>
-            <span class="v">3</span><span class="v">4</span><span class="g">1</span><span class="b">2</span>
-            <span class="g">4</span><span class="g">2</span><span class="g">3</span><span class="b">1</span>
-            <span class="a">4</span><span class="a">2</span><span class="a">1</span><span class="a">3</span>
-          </div>
-        </div>
-      </article>
-      <article class="mode-card chroma">
-        <div class="mode-content">
-          <span class="mode-label" data-i18n="home.chroma.label">Chroma</span>
-          <h3 data-i18n="home.chroma.title">Color Mixing</h3>
-          <p data-i18n="home.chroma.desc">Group primary colors into regions that mix into a target shade. It feels tactile without losing puzzle rigor.</p>
-          <div class="mini-board" aria-hidden="true">
-            <span style="background:#ef4444;">R</span><span style="background:#facc15;color:#211500;">Y</span><span style="background:#2563eb;">B</span><span style="background:#f97316;">O</span>
-            <span style="background:#22c55e;">G</span><span style="background:#ef4444;">R</span><span style="background:#a855f7;">P</span><span style="background:#2563eb;">B</span>
-            <span style="background:#facc15;color:#211500;">Y</span><span style="background:#22c55e;">G</span><span style="background:#ef4444;">R</span><span style="background:#a855f7;">P</span>
-            <span style="background:#2563eb;">B</span><span style="background:#f97316;">O</span><span style="background:#facc15;color:#211500;">Y</span><span style="background:#22c55e;">G</span>
-          </div>
-        </div>
-      </article>
-      <article class="mode-card equate">
-        <div class="mode-content">
-          <span class="mode-label" data-i18n="home.equate.label">Equate</span>
-          <h3 data-i18n="home.equate.title">Spatial Math</h3>
-          <p data-i18n="home.equate.desc">Make regions whose numbers combine to a target value. Addition, multiplication, subtraction, and exact division all matter.</p>
-          <div class="mini-board" aria-hidden="true">
-            <span class="a">2</span><span class="a">6</span><span class="g">3</span><span class="g">4</span>
-            <span class="b">8</span><span class="a">1</span><span class="g">2</span><span class="r">5</span>
-            <span class="b">3</span><span class="b">4</span><span class="r">7</span><span class="r">1</span>
-            <span class="v">9</span><span class="v">2</span><span class="v">6</span><span class="r">3</span>
-          </div>
-        </div>
-      </article>
-    </div>
-  </section>
-
-  <section class="section" id="screens">
-    <div class="section-head">
-      <p class="kicker" data-i18n="home.look.kicker">Game Look</p>
-      <h2 data-i18n="home.look.title">Color themes, dense boards, and a calm mobile rhythm.</h2>
-      <p class="section-lede" data-i18n="home.look.lede">Deep navy surfaces, violet highlights, and mosaic color accents match the app itself. The page uses real gameplay screens so the puzzle is visible immediately.</p>
-    </div>
-    <div class="shot-grid">
-      <figure class="shot-card">
-        <img src="assets/tessera-home.png?v=20260601b" alt="Tessera Logic mode board with matched territory colors" loading="lazy" decoding="async">
-        <figcaption><strong data-i18n="home.shot.home.title">Logic</strong><span data-i18n="home.shot.home.desc">Reverse-Sudoku territory rules with matched board colors.</span></figcaption>
-      </figure>
-      <figure class="shot-card">
-        <img src="assets/tessera-chroma.png?v=20260601b" alt="Tessera Chroma mode board with color targets" loading="lazy" decoding="async">
-        <figcaption><strong data-i18n="home.shot.chroma.title">Chroma</strong><span data-i18n="home.shot.chroma.desc">Color-mix targets with the same board rhythm.</span></figcaption>
-      </figure>
-      <figure class="shot-card">
-        <img src="assets/tessera-equate.png?v=20260601b" alt="Tessera Equate mode board with equation targets" loading="lazy" decoding="async">
-        <figcaption><strong data-i18n="home.shot.equate.title">Equate</strong><span data-i18n="home.shot.equate.desc">Math targets presented as premium variants.</span></figcaption>
-      </figure>
-      <figure class="shot-card">
-        <img src="assets/tessera-daily.png?v=20260601b" alt="Tessera Daily Challenge board" loading="lazy" decoding="async">
-        <figcaption><strong data-i18n="home.shot.daily.title">Daily</strong><span data-i18n="home.shot.daily.desc">Repeatable challenge screens for launch.</span></figcaption>
-      </figure>
-    </div>
-  </section>
-
-  <section class="section" id="challenge">
-    <div class="challenge-band">
-      <div>
-        <p class="kicker" data-i18n="home.challenge.kicker">Beyond the Journey</p>
-        <h2 data-i18n="home.challenge.title">Built for short daily play and deep mastery.</h2>
-        <p class="section-lede" data-i18n="home.challenge.lede">Tessera gives you a calm main path, then lets the same board become a race, memory test, fog puzzle, or roguelike run.</p>
-      </div>
-      <div class="challenge-list">
-        <div class="challenge-item">
-          <div class="challenge-icon" style="background:var(--blue);">R</div>
-          <div><strong data-i18n="home.rush.title">Territory Rush</strong><span data-i18n="home.rush.desc">Race a simulated AI opponent on the same puzzle.</span></div>
-        </div>
-        <div class="challenge-item">
-          <div class="challenge-icon" style="background:var(--lavender);">E</div>
-          <div><strong data-i18n="home.echo.title">Echo</strong><span data-i18n="home.echo.desc">Memorize the solution, then rebuild it from memory.</span></div>
-        </div>
-        <div class="challenge-item">
-          <div class="challenge-icon" style="background:var(--emerald);">F</div>
-          <div><strong data-i18n="home.fog.title">Fog</strong><span data-i18n="home.fog.desc">Numbers disappear over time, with only a few peeks.</span></div>
-        </div>
-        <div class="challenge-item">
-          <div class="challenge-icon" style="background:var(--amber);">M</div>
-          <div><strong data-i18n="home.run.title">Mosaic Run</strong><span data-i18n="home.run.desc">Survive escalating rounds with modifier cards.</span></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="premium">
-    <div class="section-head">
-      <p class="kicker" data-i18n="home.premium.kicker">Premium By Restraint</p>
-      <h2 data-i18n="home.premium.title">Free with ads. One unlock makes Tessera quiet.</h2>
-    </div>
-    <div class="premium-grid">
-      <div class="panel">
-        <h3 data-i18n="home.premium.card.title">Tessera Premium</h3>
-        <p data-i18n="home.premium.card.desc">A one-time $5.99 unlock for players who want Tessera to feel quiet and complete.</p>
-        <ul>
-          <li data-i18n="home.premium.li1">Removes banner, interstitial, and rewarded ads</li>
-          <li data-i18n="home.premium.li2">Keeps hints available within the per-puzzle cap and unlocks unlimited daily plays</li>
-          <li data-i18n="home.premium.li3">Includes premium color themes and full league stats</li>
-        </ul>
-      </div>
-      <div class="panel">
-        <h3 data-i18n="home.boundaries.title">Clear Boundaries</h3>
-        <div class="proof-list">
-          <p data-i18n="home.boundaries.p1">Rewarded ads are player-started and tied to useful bonuses, not forced puzzle progress.</p>
-          <p data-i18n="home.boundaries.p2">Google UMP consent runs before ad requests, and platform store billing handles purchases.</p>
-          <p data-i18n="home.boundaries.p3">Hint packs, if offered, are only for non-premium players; Premium includes the full per-puzzle hint allowance.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section launch-band" id="launch">
-    <div>
-      <p class="kicker" data-i18n="home.launch.kicker">Trust And Launch</p>
-      <h2 data-i18n="home.launch.title">Public links are ready for store review.</h2>
-      <div class="launch-links" aria-label="Public launch links">
-        <a href="privacy/" data-i18n="nav.privacy">Privacy Policy</a>
-        <a href="terms/" data-i18n="nav.terms">Terms of Service</a>
+  <header class="site-header">
+    <nav class="site-nav" aria-label="Primary">
+      <a class="brand" href="./" aria-label="Tessera home">
+        <span class="mark" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+        <span class="brand-word">TESSERA</span>
+      </a>
+      <div class="nav-links">
+        <a href="#modes" data-i18n="nav.modes">Modes</a>
+        <a href="#gameplay" data-i18n="nav.look">Gameplay</a>
+        <a href="#challenge" data-i18n="nav.challenge">Challenge</a>
+        <a href="#premium" data-i18n="nav.premium">Premium</a>
         <a href="support/" data-i18n="nav.support">Support</a>
       </div>
-    </div>
-    <div class="proof-list">
-      <p data-i18n-html="home.launch.p1"><strong>Privacy:</strong> clear data, ads, consent, purchases, analytics, and local save language.</p>
-      <p data-i18n-html="home.launch.p2"><strong>Terms:</strong> simple use, purchase, ad, and support terms for the launch build.</p>
-      <p data-i18n-html="home.launch.p3"><strong>Support:</strong> one-page help with contact details, restore purchase guidance, and troubleshooting.</p>
-    </div>
-  </section>
-</main>
+      <label class="language-control">
+        <span class="visually-hidden" data-i18n="nav.language">Language</span>
+        <select class="language-select" aria-label="Language">
+          <option value="en">English</option>
+          <option value="ar">العربية</option>
+          <option value="es">Español</option>
+          <option value="fr">Français</option>
+          <option value="de">Deutsch</option>
+          <option value="pt">Português</option>
+          <option value="it">Italiano</option>
+          <option value="ja">日本語</option>
+          <option value="ko">한국어</option>
+          <option value="zh">简体中文</option>
+          <option value="ru">Русский</option>
+          <option value="tr">Türkçe</option>
+          <option value="hi">हिन्दी</option>
+          <option value="id">Bahasa Indonesia</option>
+          <option value="nl">Nederlands</option>
+          <option value="pl">Polski</option>
+          <option value="sv">Svenska</option>
+          <option value="vi">Tiếng Việt</option>
+        </select>
+      </label>
+    </nav>
+  </header>
 
-<footer>
-  <p class="footer-identity"><strong>Tessera</strong><span data-i18n="footer.identity">Tessera is an independent mobile game by Gaborandi.</span></p>
-  <p>
-    <a href="privacy/" data-i18n="nav.privacy">Privacy Policy</a>
-    <a href="terms/" data-i18n="nav.terms">Terms of Service</a>
-    <a href="support/" data-i18n="nav.support">Support</a>
-  </p>
-  <p data-i18n="footer.copy">&copy; 2026 Gaborandi. Tessera: The Mosaic Puzzle. All rights reserved.</p>
-</footer>
-<script src="assets/site.js?v=20260601b"></script>
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-media" aria-hidden="true">
+        <figure class="hero-frame hero-frame-logic"><img src="assets/tessera-home.webp?v=20260905" alt="" width="442" height="960" fetchpriority="high" decoding="async"></figure>
+        <figure class="hero-frame hero-frame-chroma"><img src="assets/tessera-chroma.webp?v=20260905" alt="" width="442" height="960" decoding="async"></figure>
+        <figure class="hero-frame hero-frame-equate"><img src="assets/tessera-equate.webp?v=20260905" alt="" width="442" height="960" decoding="async"></figure>
+      </div>
+      <div class="hero-scrim" aria-hidden="true"></div>
+      <div class="hero-inner">
+        <p class="eyebrow" data-i18n="home.eyebrow">Independent puzzle game</p>
+        <h1 id="hero-title" data-i18n="home.title">Tessera</h1>
+        <p class="tagline" data-i18n="home.tagline">Three ways to solve one mosaic.</p>
+        <p class="subtitle" data-i18n="home.subtitle">Partition connected regions through number logic, color mixing, or exact arithmetic. Explore 600 deterministic Journey levels, daily puzzles, and focused challenge modes.</p>
+        <div class="actions">
+          <span class="store-button inert" role="status">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+            <span data-i18n="home.appstore">App Store release pending</span>
+          </span>
+          <a class="secondary-button" href="#modes" data-i18n="home.explore">Explore the modes</a>
+        </div>
+        <dl class="hero-facts" aria-label="Game summary">
+          <div><dt data-i18n="home.stat.levels.title">600 levels</dt><dd data-i18n="home.stat.levels.desc">Deterministic Journey progression</dd></div>
+          <div><dt data-i18n="home.stat.unlock.title">One unlock</dt><dd data-i18n="home.stat.unlock.desc">Premium is a one-time purchase</dd></div>
+          <div><dt data-i18n="home.stat.local.title">Offline play</dt><dd data-i18n="home.stat.local.desc">Progress stays on your device</dd></div>
+        </dl>
+      </div>
+      <a class="hero-next" href="#modes" aria-label="Continue to game modes"><span></span></a>
+    </section>
+
+    <section class="band band-light" id="modes">
+      <div class="section">
+        <div class="section-head">
+          <p class="kicker" data-i18n="home.modes.kicker">The core idea</p>
+          <h2 data-i18n="home.modes.title">A region is correct only when its shape and rule both hold.</h2>
+          <p class="section-lede" data-i18n="home.modes.lede">Every mode asks which cells belong together. The answer changes when the rule becomes numbers, color, or arithmetic.</p>
+        </div>
+        <div class="mode-grid">
+          <article class="mode-card logic"><span class="mode-index">01</span><span class="mode-label" data-i18n="home.logic.label">Logic</span><h3 data-i18n="home.logic.title">Reverse Sudoku</h3><p data-i18n="home.logic.desc">Draw equal-size connected regions where no number repeats.</p><div class="rule-bar" aria-hidden="true"><span></span><span></span><span></span><span></span></div></article>
+          <article class="mode-card chroma"><span class="mode-index">02</span><span class="mode-label" data-i18n="home.chroma.label">Chroma</span><h3 data-i18n="home.chroma.title">Color Mixing</h3><p data-i18n="home.chroma.desc">Group primary colors into regions that mix into the target shade.</p><div class="rule-bar" aria-hidden="true"><span></span><span></span><span></span><span></span></div></article>
+          <article class="mode-card equate"><span class="mode-index">03</span><span class="mode-label" data-i18n="home.equate.label">Equate</span><h3 data-i18n="home.equate.title">Spatial Arithmetic</h3><p data-i18n="home.equate.desc">Build connected regions whose numbers satisfy an exact equation.</p><div class="rule-bar" aria-hidden="true"><span></span><span></span><span></span><span></span></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="band band-dark" id="gameplay">
+      <div class="section preview-layout">
+        <div class="preview-copy">
+          <p class="kicker" data-i18n="home.look.kicker">Real gameplay</p>
+          <h2 data-i18n="home.look.title">From an empty board to a complete mosaic.</h2>
+          <p class="section-lede" data-i18n="home.look.lede">Watch genuine Build 33 solves across Logic, Chroma, and Equate, followed by the full 4x4 to 8x8 grid range.</p>
+          <ol class="preview-timeline"><li><strong>Logic</strong><span>Unique numbers</span></li><li><strong>Chroma</strong><span>Exact color mixes</span></li><li><strong>Equate</strong><span>Balanced arithmetic</span></li></ol>
+        </div>
+        <div class="video-shell">
+          <video controls playsinline muted preload="metadata" poster="assets/tessera-home.webp?v=20260905" aria-label="Tessera gameplay preview showing Logic, Chroma, Equate, and grid sizes from 4 by 4 to 8 by 8">
+            <source src="assets/tessera-gameplay-preview.mp4?v=20260905" type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </section>
+
+    <section class="band band-gallery" aria-labelledby="gallery-title">
+      <div class="section">
+        <div class="section-head compact"><p class="kicker" data-i18n="home.look.kicker">Inside Tessera</p><h2 id="gallery-title" data-i18n="home.look.title">One board language, four distinct rhythms.</h2></div>
+        <div class="shot-grid">
+          <figure class="shot-card"><img src="assets/tessera-home.webp?v=20260905" alt="Tessera Logic mode with completed connected territories" width="442" height="960" loading="lazy" decoding="async"><figcaption><strong data-i18n="home.shot.home.title">Logic</strong><span data-i18n="home.shot.home.desc">Unique numbers in connected, equal-size territories.</span></figcaption></figure>
+          <figure class="shot-card"><img src="assets/tessera-chroma.webp?v=20260905" alt="Tessera Chroma mode with target color mixes" width="442" height="960" loading="lazy" decoding="async"><figcaption><strong data-i18n="home.shot.chroma.title">Chroma</strong><span data-i18n="home.shot.chroma.desc">Primary colors combine into exact targets.</span></figcaption></figure>
+          <figure class="shot-card"><img src="assets/tessera-equate.webp?v=20260905" alt="Tessera Equate mode with arithmetic targets" width="442" height="960" loading="lazy" decoding="async"><figcaption><strong data-i18n="home.shot.equate.title">Equate</strong><span data-i18n="home.shot.equate.desc">Arithmetic determines every territory.</span></figcaption></figure>
+          <figure class="shot-card"><img src="assets/tessera-daily.webp?v=20260905" alt="Tessera Daily Challenge on a seven by seven board" width="442" height="960" loading="lazy" decoding="async"><figcaption><strong data-i18n="home.shot.daily.title">Daily</strong><span data-i18n="home.shot.daily.desc">A date-based puzzle and streak to return to.</span></figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="band band-challenge" id="challenge">
+      <div class="section challenge-layout">
+        <div class="challenge-intro"><p class="kicker" data-i18n="home.challenge.kicker">Beyond Journey</p><h2 data-i18n="home.challenge.title">Short daily play. Deeper mastery when you want it.</h2><p class="section-lede" data-i18n="home.challenge.lede">A calm 600-level path expands into speed, memory, fog, and escalating multi-round challenges.</p></div>
+        <div class="challenge-list">
+          <article><span class="challenge-number">01</span><div><h3 data-i18n="home.rush.title">Territory Rush</h3><p data-i18n="home.rush.desc">Race a simulated rival on the same puzzle.</p></div></article>
+          <article><span class="challenge-number">02</span><div><h3 data-i18n="home.echo.title">Echo</h3><p data-i18n="home.echo.desc">Memorize the solution, then rebuild it.</p></div></article>
+          <article><span class="challenge-number">03</span><div><h3 data-i18n="home.fog.title">Fog</h3><p data-i18n="home.fog.desc">Numbers fade while reveals stay limited.</p></div></article>
+          <article><span class="challenge-number">04</span><div><h3 data-i18n="home.run.title">Mosaic Run</h3><p data-i18n="home.run.desc">Survive escalating rounds with modifiers.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="band band-premium" id="premium">
+      <div class="section premium-layout">
+        <div><p class="kicker" data-i18n="home.premium.kicker">Premium, once</p><h2 data-i18n="home.premium.title">Play free with ads, or make Tessera quiet with one purchase.</h2><p class="section-lede" data-i18n="home.premium.card.desc">Premium pricing is shown by the App Store in the player’s local currency. There is no subscription.</p></div>
+        <ul class="premium-list"><li data-i18n="home.premium.li1">Removes banner, interstitial, and rewarded ads</li><li data-i18n="home.premium.li2">Keeps the full capped hint allowance available and removes daily-play limits</li><li data-i18n="home.premium.li3">Unlocks four exclusive color themes</li></ul>
+      </div>
+    </section>
+
+    <section class="band band-trust" id="launch">
+      <div class="section trust-layout">
+        <div><p class="kicker" data-i18n="home.launch.kicker">Built with clear boundaries</p><h2 data-i18n="home.launch.title">A focused puzzle, without an account or subscription.</h2></div>
+        <div class="trust-copy">
+          <p data-i18n-html="home.launch.p1"><strong>Local-first:</strong> progress and settings stay on the device unless the player exports them.</p>
+          <p data-i18n-html="home.launch.p2"><strong>Consent-aware:</strong> ad privacy choices appear where required, before ad requests.</p>
+          <p data-i18n-html="home.launch.p3"><strong>Store-managed:</strong> Apple handles purchases and restoration; Tessera never receives payment details.</p>
+          <div class="launch-links" aria-label="Public information links"><a href="privacy/" data-i18n="nav.privacy">Privacy Policy</a><a href="terms/" data-i18n="nav.terms">Terms of Service</a><a href="support/" data-i18n="nav.support">Support</a></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p class="footer-identity" data-i18n="footer.identity"><strong>Tessera</strong> is an independent mobile puzzle game by Gaborandi.</p>
+    <p data-i18n="footer.copy">&copy; 2026 Gaborandi. Tessera: The Mosaic Puzzle. All rights reserved.</p>
+  </footer>
+  <script src="assets/site.js?v=20260905b"></script>
 </body>
 </html>

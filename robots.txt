@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+User-agent: Google-adstxt
+Disallow:
+
+Sitemap: https://gaborandi.github.io/tesserapuzzle-site/sitemap.xml

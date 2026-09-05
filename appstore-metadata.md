@@ -20,8 +20,15 @@ Free (with in-app purchases)
 - Tessera Premium — $5.99 (removes ads, keeps hints available within the per-puzzle cap, unlimited plays, exclusive themes)
 - Hint Pack — $0.99 (optional 10 bonus hints for non-premium players; Premium includes the full per-puzzle hint allowance)
 
-## Keywords (100 chars max)
-puzzle,territory,mosaic,sudoku,logic,color mixing,math,brain teaser,daily challenge,strategy
+## Submitted English (U.S.) Keywords - Version 1.0.0
+
+Exact 100-byte value saved in App Store Connect on September 5, 2026:
+
+`sudoku,brain,number,grid,daily,challenge,offline,relaxing,territory,cage,arithmetic,reverse,strategy`
+
+Do not alter this baseline while version 1.0.0 is waiting for review. Future
+keyword experiments belong in a dated hypothesis log and require measured App
+Store impressions, product-page views, and conversion data before replacement.
 
 ## Description (4000 chars max)
 
