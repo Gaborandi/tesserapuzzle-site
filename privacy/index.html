@@ -4,16 +4,23 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Privacy Policy &mdash; Tessera: The Mosaic Puzzle</title>
-<meta name="description" content="Privacy policy for Tessera: The Mosaic Puzzle, including local save data, ads, consent, platform purchases, deferred leaderboards, and notifications.">
+<meta name="description" content="Tessera privacy notice: local game and purchase data, ad consent, retention, international processing and your data-protection rights.">
 <link rel="canonical" href="https://gaborandi.github.io/tesserapuzzle-site/privacy/">
 <link rel="icon" href="../assets/tessera-icon.png">
 <meta property="og:title" content="Tessera Privacy Policy">
-<meta property="og:description" content="Privacy details for Tessera local data, ads, consent, purchases, deferred leaderboards, and notifications.">
+<meta property="og:description" content="How Tessera handles data, purchases, advertising choices and privacy rights.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://gaborandi.github.io/tesserapuzzle-site/privacy/">
 <meta property="og:image" content="https://gaborandi.github.io/tesserapuzzle-site/assets/tessera-icon.png">
 <meta name="twitter:card" content="summary">
 <link rel="stylesheet" href="../assets/legal.css">
+<style>
+/* Keep section links below the sticky navigation at phone widths. */
+main section[id], #reset-data { scroll-margin-top: 160px; }
+/* Legal text remains English when the surrounding navigation is translated. */
+html[dir="rtl"] main[lang="en"] ul { padding-left: 20px; padding-right: 0; }
+html[dir="rtl"] main[lang="en"] .note { border-right: 0; border-left: 4px solid var(--amber); border-radius: 0 12px 12px 0; }
+</style>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -51,126 +58,142 @@
   </nav>
 </header>
 
-<main class="page" id="main">
+<main class="page" id="main" lang="en" dir="ltr">
   <section class="page-hero">
-    <p class="eyebrow" data-i18n="privacy.eyebrow">Privacy</p>
-    <h1 data-i18n="privacy.title">Privacy Policy</h1>
-    <p class="hero-lede" data-i18n="privacy.lede">This policy explains what Tessera stores on your device, and what Apple or Google may collect when you use ads, purchases, or optional features.</p>
+    <p class="eyebrow">Privacy</p>
+    <h1>Privacy Policy</h1>
+    <p class="hero-lede">How Tessera handles game data, advertising choices, purchases and support requests, and how you can exercise your privacy rights.</p>
     <div class="legal-meta">
-      <span class="pill" data-i18n="legal.updated">Last updated: August 14, 2026</span>
-      <span class="pill" data-i18n="legal.source">The English version is the legal source of truth if meaning differs.</span>
+      <span class="pill">Last updated: September 12, 2026</span>
+      <span class="pill">This updated notice is provided in English.</span>
     </div>
+    <p style="margin-top:16px">Navigation can be displayed in your chosen language. The full privacy notice is currently available in English.</p>
   </section>
 
   <div class="summary-grid" aria-label="Privacy summary">
-    <div class="summary-card">
-      <strong data-i18n="privacy.summary.local.title">Local save data</strong>
-      <p data-i18n="privacy.summary.local.desc">Progress, settings, and statistics stay on your device unless you export them.</p>
-    </div>
-    <div class="summary-card">
-      <strong data-i18n="privacy.summary.ads.title">Ads with consent</strong>
-      <p data-i18n="privacy.summary.ads.desc">Advertising uses Google AdMob and UMP where privacy choices are required.</p>
-    </div>
-    <div class="summary-card">
-      <strong data-i18n="privacy.summary.apple.title">Stores handle purchases</strong>
-      <p data-i18n="privacy.summary.apple.desc">Purchases use the platform store; we do not receive your payment details.</p>
-    </div>
+    <div class="summary-card"><strong>Game progress stays on your device</strong><p>There is no Tessera account or developer-operated cloud save service. Exporting or sharing is your choice.</p></div>
+    <div class="summary-card"><strong>Your advertising choices matter</strong><p>Regional ad consent and Apple's tracking permission are separate. Refusing either does not prevent gameplay.</p></div>
+    <div class="summary-card"><strong>Purchases survive a progress reset</strong><p>On iOS, the app keeps purchase status, stocked hints and delivery records locally. Reset All Progress is not full data deletion.</p></div>
   </div>
 
   <div class="legal-layout">
     <aside class="legal-toc" aria-label="Privacy sections">
-      <strong data-i18n="privacy.toc">On this page</strong>
-      <a href="#data" data-i18n="privacy.s1">1. Data We Collect</a>
-      <a href="#use" data-i18n="privacy.s2">2. How We Use Data</a>
-      <a href="#sharing" data-i18n="privacy.s3">3. Data Sharing</a>
-      <a href="#children" data-i18n="privacy.s4">4. Children's Privacy</a>
-      <a href="#tracking" data-i18n="privacy.s5">5. App Tracking Transparency</a>
-      <a href="#retention" data-i18n="privacy.s6">6. Data Retention and Deletion</a>
-      <a href="#rights" data-i18n="privacy.s7">7. Your Rights</a>
-      <a href="#changes" data-i18n="privacy.s8">8. Changes</a>
-      <a href="#contact" data-i18n="privacy.s9">9. Contact</a>
+      <strong>On this page</strong>
+      <a href="#controller">1. Who is responsible</a>
+      <a href="#data">2. Data we handle</a>
+      <a href="#use">3. Purposes and legal grounds</a>
+      <a href="#tracking">4. Consent and tracking choices</a>
+      <a href="#sharing">5. Recipients and international processing</a>
+      <a href="#retention">6. Retention and deletion</a>
+      <a href="#rights">7. Your rights</a>
+      <a href="#children">8. Children's privacy</a>
+      <a href="#changes">9. Changes to this notice</a>
+      <a href="#contact">10. Contact</a>
     </aside>
 
     <article class="legal-card">
+      <section id="controller">
+        <h2>1. Who is responsible</h2>
+        <p>Tessera is developed by Ahmed alm eldin, publishing as Gaborandi, an independent developer based in Egypt. In this notice, “we” means this developer, who is responsible for the processing we determine for Tessera and for support messages sent to us.</p>
+        <p>Contact: <a href="mailto:a.alameldien@gmail.com">a.alameldien@gmail.com</a>. This notice covers Tessera's game services and this product website. Platform-specific descriptions below identify the current iOS behavior. Purchases in an Android version, where offered, use Google Play Billing.</p>
+        <p>Apple, Google and our website host also process information for their own services. Their responsibilities and privacy notices are described below; their policies do not replace our responsibility for the processing we determine.</p>
+      </section>
+
       <section id="data">
-        <h2 data-i18n="privacy.s1">1. Data We Collect</h2>
+        <h2>2. Data we handle</h2>
+        <h3>Game data on your device</h3>
+        <p>The app stores puzzle progress, completed levels, stars, streaks, achievements, Statistics, local Solo League results, saved games, preferences and tutorial state on your device. It also keeps a limited local gameplay-event history, including event times and local session identifiers. That event history is not sent to a developer analytics server.</p>
+        <p>There is no Tessera login, developer-operated user database or cloud save service. We do not receive your saved progress automatically. You can choose to export or share supported game information, or send it to us with a support request. Device backups and copies you export are controlled separately by you and your backup provider.</p>
 
-        <h3 data-i18n="privacy.local.title">Data Stored Locally on Your Device</h3>
-        <p data-i18n="privacy.local.body">Tessera stores game progress, settings, and preferences locally on your device using localStorage. This data does not leave your device unless you choose to export it.</p>
-        <ul>
-          <li data-i18n="privacy.local.li1">Game progress, completed levels, stars, and streaks</li>
-          <li data-i18n="privacy.local.li2">Statistics such as best times and total puzzles solved</li>
-          <li data-i18n="privacy.local.li3">Settings such as sound, haptics, color-blind mode, and themes</li>
-          <li data-i18n="privacy.local.li4">Saved puzzle state and anonymous local analytics events</li>
-        </ul>
-        <p class="note" data-i18n="privacy.local.note">We do not operate a server-side user database and we do not sell your game progress data.</p>
+        <h3>Advertising and privacy choices</h3>
+        <p>The Free game uses Google AdMob for banner, interstitial and optional rewarded ads, and Google's User Messaging Platform (UMP) for regional privacy choices. These services may process device identifiers, IP addresses and approximate location inferred from them, device/app information, ad views and interactions, performance information, crash logs and other diagnostics. Google uses these data to deliver and measure advertising, operate its services and detect fraud or abuse. Consent choices and relevant device permission state are also processed to apply your choices.</p>
+        <p>Premium removes ads. On iOS, verified Premium ownership prevents new ad requests. Buying Premium does not erase information already held by Google or stop the store from processing your purchases.</p>
+        <p>Tessera does not request access to your precise GPS location, contacts, microphone, camera or health data. Approximate location from an IP address is different from device GPS permission.</p>
 
-        <h3 data-i18n="privacy.third.title">Data Collected by Third-Party Services</h3>
+        <h3>Purchases and restore</h3>
+        <p>Apple handles iOS payments through StoreKit. Tessera receives product, transaction and entitlement information needed to deliver Premium or Hint Pack and reconcile purchases, cancellations, refunds and revocations. It keeps Premium status, hint balances, purchase counters and processed transaction identifiers locally to avoid duplicate delivery and support restore. We do not receive your card details or Apple Account password through the app.</p>
+        <p>Store reporting may provide sales and proceeds summaries. These reports are separate from the app's local purchase records. A support message may contain additional purchase information if you choose to send it.</p>
 
-        <h4 data-i18n="privacy.admob.title">Google AdMob and Advertising</h4>
-        <p data-i18n="privacy.admob.body">We use Google AdMob to display advertisements. Google may collect device identifiers, IP-derived general location, advertising and interaction data, crash logs, performance data, and other diagnostics for advertising, analytics, app functionality, measurement, and fraud prevention.</p>
-        <p data-i18n="privacy.ump">Where required by law, the app shows Google's User Messaging Platform consent form before requesting ads. You can reopen ad privacy choices from Tessera Settings when they are available in your region.</p>
-        <p data-i18n="privacy.premium">Premium users do not see advertisements. The AdMob SDK may still collect limited device data for fraud prevention and analytics in accordance with Google's privacy policy.</p>
+        <h3>Notifications and online features</h3>
+        <p>Optional reminders are scheduled locally after notification permission. Tessera does not send notification data to a developer push server. The iOS launch version has no chat, online player accounts or Game Center leaderboard submissions; Solo League opponents are simulated.</p>
 
-        <h4 data-i18n="privacy.storekit.title">Platform Store Purchases</h4>
-        <p data-i18n="privacy.storekit.body">In-app purchases are processed through the platform store: Apple StoreKit on iOS, and Google Play Billing on Android when Android is available. We do not use a third-party payment processor, and we do not receive or store your card, Apple ID, or Google payment details.</p>
-
-        <h4 data-i18n="privacy.gc.title">Leaderboards Deferred for Launch</h4>
-        <p data-i18n="privacy.gc.body">The current launch build does not enable Apple Game Center, Google Play Games Services, or online leaderboard submissions. If platform leaderboards are enabled in a future version, this policy will be updated before collecting or sharing leaderboard data.</p>
-
-        <h4 data-i18n="privacy.notifications.title">Local Notifications</h4>
-        <p data-i18n="privacy.notifications.body">With your permission, the app may schedule local reminders on your device to help maintain a daily streak. Notification data is not sent to any server.</p>
+        <h3>Support messages and this website</h3>
+        <p>If you email us, we receive your email address, message and any attachments you choose to send, such as screenshots or exported progress. Our email provider processes these communications to deliver and store them. Please do not send passwords or full payment-card details.</p>
+        <p>This website is hosted on GitHub Pages. Hosting involves processing technical request information such as IP addresses and browser information to deliver and secure the site. Our site remembers your chosen language in your browser's local storage; you can remove it by clearing this site's browser data. We have not added advertising pixels or a third-party audience-analytics service to the website.</p>
       </section>
 
       <section id="use">
-        <h2 data-i18n="privacy.s2">2. How We Use Data</h2>
+        <h2>3. Purposes and legal grounds</h2>
+        <p>Where the EU or UK GDPR applies, the legal ground depends on the particular processing:</p>
         <ul>
-          <li data-i18n="privacy.use.li1">Local game data: used to save your progress and preferences on your device.</li>
-          <li data-i18n="privacy.use.li2">Advertising data: used by Google AdMob to show ads and measure performance.</li>
-          <li data-i18n="privacy.use.li3">Purchase data: processed by the platform store; we only store Premium status locally.</li>
-          <li data-i18n="privacy.use.li4">Platform leaderboard data: not collected in the current launch build.</li>
-          <li data-i18n="privacy.use.li5">Notification permissions: used only for on-device local reminders.</li>
+          <li><strong>Providing the game and purchases:</strong> processing necessary to provide the service you request, including saving progress and delivering or restoring purchases, is based on performance of our contract with you (Article 6(1)(b)).</li>
+          <li><strong>Optional advertising processing:</strong> where required, device storage/access and use of personal data for personalized advertising depend on your consent (Article 6(1)(a) and applicable device-storage rules). The regional consent form explains the available purposes and partners. We do not use a general legitimate-interest claim to override a refusal where consent is required.</li>
+          <li><strong>Support:</strong> we use information necessary to answer a request about your game or purchase to provide that service. For other enquiries, our legitimate interest is responding to the message you chose to send (Article 6(1)(f)).</li>
+          <li><strong>Security and dispute handling:</strong> where necessary, our legitimate interests are protecting the service, preventing duplicate or fraudulent delivery, and establishing or defending claims (Article 6(1)(f)), subject to your interests and rights.</li>
+          <li><strong>Legal duties:</strong> if an applicable law requires records or a response to a lawful request, the relevant processing is based on that obligation (Article 6(1)(c)).</li>
         </ul>
-      </section>
-
-      <section id="sharing">
-        <h2 data-i18n="privacy.s3">3. Data Sharing</h2>
-        <p data-i18n="privacy.share">We do not sell or rent personal information ourselves, and we do not run a server-side user database. The app shares data with Google AdMob for advertising, consent, measurement, and fraud prevention, and with the platform store for purchases. The current launch build does not share platform leaderboard data.</p>
-      </section>
-
-      <section id="children">
-        <h2 data-i18n="privacy.s4">4. Children's Privacy</h2>
-        <p data-i18n="privacy.children">Tessera is suitable for users of all ages. We do not knowingly collect personal information from children under 13. The app does not require an account or login to play.</p>
+        <p>Apple, Google and GitHub explain the legal grounds for their own processing in their privacy notices. Providing optional support attachments is your choice. Refusing advertising consent or tracking permission does not remove gameplay access; declining to provide information essential to a particular support request may limit our ability to resolve it.</p>
+        <p>We do not make decisions about you with legal or similarly significant effects solely by automated processing. Ad partners may select personalized ads using the data and choices described in their notices and the consent form.</p>
       </section>
 
       <section id="tracking">
-        <h2 data-i18n="privacy.s5">5. App Tracking Transparency</h2>
-        <p data-i18n="privacy.att">On iOS 14.5 and later, the app presents Apple's standard App Tracking Transparency prompt before any tracking can occur. You may decline tracking and continue using every feature of the app.</p>
+        <h2>4. Consent and tracking choices</h2>
+        <p><strong>Regional advertising consent:</strong> in the EEA, UK, Switzerland and other regions where required, UMP presents the applicable choices before eligible ads are requested. On iOS, open Tessera Settings and choose <strong>Ad Privacy Choices</strong> when that option is available to review or withdraw your choices. An unavailable or failed consent check does not authorize ads.</p>
+        <p><strong>Apple tracking permission:</strong> iOS also controls tracking through Apple's App Tracking Transparency (ATT) permission. When required for a Free player, Tessera requests this permission before enabling its advertising flow. You may select Ask App Not to Track, or later change the permission in iOS Settings &gt; Privacy &amp; Security &gt; Tracking. The system may restrict or suppress this prompt, and verified Premium users do not need it for ads.</p>
+        <p>ATT permission does not replace regional consent, and agreeing to the regional form does not grant ATT permission. On iOS, Tessera requests non-personalized ads when tracking is declined or personalized-ad consent is absent, provided the consent platform allows ad requests. Non-personalized ads can still involve technical data, storage, measurement and fraud prevention; they do not mean no data is processed.</p>
+        <p>You can withdraw consent without affecting the lawfulness of processing that occurred before withdrawal. A refusal does not prevent you from playing. Advertising availability, including optional rewarded ads, may change. Notification permission can be changed separately in your device settings.</p>
+      </section>
+
+      <section id="sharing">
+        <h2>5. Recipients and international processing</h2>
+        <p>We do not sell your saved game progress or run a developer service that uploads it automatically. Relevant recipients include the platform store for purchases, Google and the advertising partners identified in the consent interface for ads, GitHub for website hosting, and the email service used for support. Information you deliberately share with another app or person is handled by that recipient. We may disclose necessary records when legally required or to establish or defend a legal claim.</p>
+        <ul>
+          <li><a href="https://www.apple.com/legal/privacy/en-ww/">Apple's privacy policy</a> explains store and Apple Account processing, retention and privacy requests.</li>
+          <li><a href="https://policies.google.com/privacy">Google's privacy policy</a> and <a href="https://policies.google.com/technologies/partner-sites">how Google uses information from partner apps</a> explain advertising and Google service processing. Google has its own controller responsibilities for its advertising services.</li>
+          <li><a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub's privacy statement</a> explains hosting-related processing and privacy rights.</li>
+        </ul>
+        <p>Information processed by these services may be stored or accessed outside your country, including in the United States. Support messages sent directly to us may be accessed by the developer in Egypt. Different countries have different data-protection laws.</p>
+        <p>For their relevant international transfers, Apple describes Standard Contractual Clauses; Google and GitHub describe safeguards that include applicable adequacy decisions, Data Privacy Framework participation and Standard Contractual Clauses. See <a href="https://policies.google.com/privacy/frameworks?hl=en">Google's transfer information</a> and the Apple and GitHub notices above for details and ways to request information about safeguards. These are the providers' arrangements, not a claim that Gaborandi itself holds a Data Privacy Framework certification. You can contact us for information about transfers involving data we handle.</p>
       </section>
 
       <section id="retention">
-        <h2 data-i18n="privacy.s6">6. Data Retention and Deletion</h2>
-        <p data-i18n="privacy.delete.body">All local game data can be deleted at any time by using the Reset All Progress button in the app's Settings screen or by uninstalling the app.</p>
+        <h2>6. Retention and deletion</h2>
+        <ul>
+          <li><strong>Progress and preferences:</strong> generally remain on your device until you reset progress, remove the app's data or delete the app. Some histories are bounded and older entries are discarded as new ones are recorded.</li>
+          <li><strong>Local gameplay events:</strong> the current iOS app retains a rolling history of up to 500 events, trimming older events as new ones are added. Reset All Progress clears that history.</li>
+          <li><strong>Purchase and protected reward records:</strong> are retained locally while app data remains, so the app can honor purchases, preserve stocked hints and avoid duplicate grants. Store-held purchase records are retained by Apple under its policy and applicable obligations.</li>
+          <li><strong>Support correspondence:</strong> is retained for as long as needed to resolve the enquiry and necessary related follow-up, and longer only where needed for legal duties or a specific dispute or claim. The relevant criteria are whether the issue remains open, whether the record is needed for follow-up, and whether a legal retention or claims need applies. You may request deletion.</li>
+          <li><strong>Website language preference:</strong> remains until replaced or cleared in your browser. GitHub controls hosting-log retention under its notice.</li>
+          <li><strong>Advertising and provider-held information:</strong> retention varies with the data, purpose, account settings and legal or security needs. See <a href="https://policies.google.com/technologies/retention">Google's retention explanation</a> and Apple's and GitHub's notices. We cannot delete their independent records by resetting Tessera.</li>
+        </ul>
+        <p class="note" id="reset-data"><strong>What Reset All Progress does on iOS:</strong> it clears gameplay progress, preferences and the temporary League Hint Bank. It preserves purchases, stocked hints, processed transaction identifiers, daily reward records and daily play allowances. It does not erase all local data, cancel purchases, withdraw system permissions or delete information held by Apple or Google.</p>
+        <p>To remove the app's local data, use <strong>Delete App</strong>, rather than Offload App, in iOS Settings. Deleting Tessera does not cancel store purchases or remove exported files, device backups or data already held by service providers. A later installation may restore eligible store entitlements. Manage backups and exported copies separately through the service or location where you kept them.</p>
       </section>
 
       <section id="rights">
-        <h2 data-i18n="privacy.s7">7. Your Rights</h2>
-        <ul>
-          <li data-i18n="privacy.rights.li1">Opt out of personalized advertising through iOS Settings &gt; Privacy &amp; Security &gt; Tracking.</li>
-          <li data-i18n="privacy.rights.li2">Delete local game data from Tessera Settings.</li>
-          <li data-i18n="privacy.rights.li3">Request information about third-party service data directly from Apple or Google.</li>
-        </ul>
+        <h2>7. Your rights</h2>
+        <p>Depending on your location and the applicable conditions, you can request access to personal data, correction of inaccurate data, erasure, restriction of processing, and a portable copy of data. You can object to processing based on legitimate interests and to direct marketing, and withdraw consent at any time. Some rights have exceptions, for example where records must be retained by law or for legal claims.</p>
+        <p>Email <a href="mailto:a.alameldien@gmail.com">a.alameldien@gmail.com</a> to exercise rights concerning data we handle or to ask for help identifying the relevant provider. We may request proportionate information to verify your identity and locate the data. We do not have remote access to your device-only save. Export Progress can provide a copy of supported gameplay records; it is not a complete export of all purchase, consent or provider-held data.</p>
+        <p>For EU and UK GDPR requests, we normally respond within one month. If a lawful extension is needed because of complexity or the number of requests, we will explain it within that first month. Requests are normally free, subject to the limited exceptions permitted by law.</p>
+        <p>You may complain to your data-protection authority, including in the EU country where you live or work or where the alleged infringement occurred. You do not need to contact us first. Find an EU authority in the <a href="https://www.edpb.europa.eu/about-edpb/about-edpb/members_en">EDPB directory</a>; UK residents can contact the <a href="https://ico.org.uk/make-a-complaint/">Information Commissioner's Office</a>.</p>
+        <p>For records controlled independently by a provider, you can also use <a href="https://www.apple.com/legal/privacy/contact/">Apple's privacy contact</a> or the rights tools in Google's and GitHub's notices. This does not remove your right to contact us about our own processing.</p>
+      </section>
+
+      <section id="children">
+        <h2>8. Children's privacy</h2>
+        <p>Tessera does not ask for a date of birth or require a player account. An App Store content age rating describes the game's content; it does not establish a player's age or permission for advertising-data processing. Where consent is the legal ground for an online service offered directly to a child, the age at which a child can consent independently varies by country, including between 13 and 16 within the EU.</p>
+        <p>We do not knowingly request personal information directly from children. If you are a parent or guardian and believe a child has sent us personal information or that processing involving your child needs attention, contact us so we can investigate and address the request. This notice does not claim that Tessera verifies age or parental consent.</p>
       </section>
 
       <section id="changes">
-        <h2 data-i18n="privacy.s8">8. Changes</h2>
-        <p data-i18n="privacy.changes">We may update this policy from time to time. The Last updated date at the top of the page reflects the latest version.</p>
+        <h2>9. Changes to this notice</h2>
+        <p>We update this notice when relevant practices or requirements change and show the revision date above. A policy update does not itself grant consent to new optional processing; additional notice or consent will be provided where required.</p>
       </section>
 
       <section id="contact">
-        <h2 data-i18n="privacy.s9">9. Contact</h2>
-        <p data-i18n="privacy.contact">If you have questions about this policy or your data, contact us:</p>
-        <p><a href="mailto:a.alameldien@gmail.com">a.alameldien@gmail.com</a></p>
+        <h2>10. Contact</h2>
+        <p><strong>Ahmed alm eldin (Gaborandi), Egypt</strong><br><a href="mailto:a.alameldien@gmail.com">a.alameldien@gmail.com</a></p>
+        <p>Use this address for questions, privacy requests and support concerning Tessera.</p>
       </section>
     </article>
   </div>
