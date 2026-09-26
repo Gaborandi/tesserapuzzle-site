@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0a16">
+  <meta name="description" content="The numbers stay. You choose the regions. Try a free 6×6 Logic challenge from Tessera: The Mosaic Puzzle.">
+  <title>Tessera — one small puzzle break</title>
+  <link rel="icon" href="mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <script src="core.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a href="#board" class="skip">Skip to puzzle</a>
+  <header class="masthead">
+    <a class="brand" href="https://gaborandi.github.io/tesserapuzzle-site/" aria-label="Tessera website"><img src="mark.svg" width="30" height="30" alt=""><span>TESSERA</span></a>
+    <span class="edition">THE MOSAIC PUZZLE</span>
+    <span id="previewBadge" class="preview" hidden>LOCAL PREVIEW</span>
+  </header>
+  <main class="layout">
+    <section class="intro" aria-labelledby="heading">
+      <p class="eyebrow"><span></span> ONE SMALL PUZZLE BREAK</p>
+      <h1 id="heading">The numbers stay.<br><em>You choose<br class="desktop-break"> the regions.</em></h1>
+      <p class="lede">Turn a grid of numbers into six connected regions. Every region needs <strong>1–6, once each.</strong></p>
+      <div class="desktop-note"><span class="note-rule"></span><p>No numbers to enter.<br>Just find what belongs together.</p></div>
+      <div class="range"><p>More to explore in the app</p><div class="sizes" aria-label="The full app includes 4 by 4, 5 by 5, 6 by 6, 7 by 7 and 8 by 8 grids"><span>4×4</span><span>5×5</span><span class="current">6×6</span><span>7×7</span><span>8×8</span></div><p class="modes">Logic · Chroma · Equate</p></div>
+    </section>
+    <section class="play" aria-label="Tessera Logic challenge">
+      <div class="board-meta"><span>CHALLENGE 01 <b>·</b> LOGIC</span><span id="completionCount">2 / 6 regions</span></div>
+      <div id="cue" class="cue" aria-live="polite">
+        <span id="cueLabel" class="cue-label">YOUR FIRST MOVE</span>
+        <h2 id="cueTitle">Green needs a 1. Which one fits?</h2>
+        <p id="cueText">Tap a 1 that touches green along an edge.</p>
+      </div>
+      <div id="board" class="board" role="group" aria-label="6 by 6 Logic board; arrows move, Enter colors a tile" aria-describedby="cueTitle cueText" tabindex="-1"></div>
+      <div id="selectedRegion" class="region-detail" aria-label="Selected region">
+        <span id="regionName">B · Green</span><div id="numbers" class="numbers" aria-label="Numbers in selected region"></div>
+      </div>
+      <div id="palette" class="palette" role="group" aria-label="Choose a region" hidden></div>
+      <div id="feedback" class="feedback" role="status" aria-live="polite">Two regions are already done. Finish green to learn the rule.</div>
+      <button id="continue" class="primary" hidden>Finish this puzzle <span aria-hidden="true">→</span></button>
+      <div id="controls" class="controls"><button id="undo" disabled>↶ <span>Undo</span></button><button id="hint">✧ <span>Hint</span></button><button id="reset">↺ <span>Restart</span></button></div>
+      <section id="win" class="win" aria-labelledby="winTitle" hidden>
+        <p class="eyebrow">EVERY PIECE BELONGS</p><h2 id="winTitle">Six regions. Nicely solved.</h2>
+        <p id="resultDetails"></p>
+        <button id="copyResult" class="primary">Copy your result <span aria-hidden="true">↗</span></button>
+        <p class="small">Same puzzle for a friend. Your solution stays secret.</p>
+        <textarea id="resultText" readonly aria-label="Spoiler-free result to copy" hidden></textarea>
+        <button id="playAgain" class="again">Play again</button>
+      </section>
+      <details class="rules"><summary>How it works</summary><ol><li>The numbers never move. You color the tiles.</li><li>Each region must contain six tiles with 1, 2, 3, 4, 5 and 6 once each.</li><li>Tiles in the same region must join along their edges. Corners alone do not count.</li><li>Choose a color, then tap tiles. Tap a tile again with its color selected to clear it. The starting tiles stay fixed.</li></ol><p>Keyboard: Tab to the board; arrow keys move between tiles; Enter or Space colors a tile. Letters A–F select a region after the first move.</p></details>
+      <div class="app-invite"><div><strong>A little more room to think.</strong><p>Try the full game on iPhone &amp; iPad.</p></div><a href="https://apps.apple.com/app/id6773765192" class="store">View on the App Store <span aria-hidden="true">↗</span></a><p class="price-note">Free to download · ads &amp; optional in-app purchases</p></div>
+    </section>
+  </main>
+  <footer><span>One free Logic challenge. Take your time.</span><button id="copyLink">Copy challenge link</button><p>This demo saves progress in this browser. No account, ads or analytics scripts.</p><p id="previewNote" hidden>Local preview: this challenge link works only on this Mac until the page is published.</p></footer>
+  <dialog id="resetDialog" aria-labelledby="resetTitle"><h2 id="resetTitle">Start this puzzle again?</h2><p>This clears only your progress on Challenge 01 in this browser.</p><div class="dialog-actions"><button id="cancelReset">Keep playing</button><button id="confirmReset" class="primary">Restart puzzle</button></div></dialog>
+  <noscript><p class="no-js">This puzzle needs JavaScript. You can also <a href="https://apps.apple.com/app/id6773765192">find Tessera on the App Store</a>.</p></noscript>
+</body>
+</html>
