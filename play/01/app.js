@@ -17,6 +17,8 @@
       started = board.some((r,i) => C.initial[i] !== r);
     }
   } catch (_) { storageAvailable = false; }
+  const metrics = window.TesseraMetrics || {init(){}, event(){}};
+  metrics.init({resumed:started});
   const phase = () => C.solved(board) ? 'done' : continued ? 'full' : C.inspect(board,1).complete ? 'ready' : 'opening';
   function tick() {
     const now = performance.now();
@@ -115,12 +117,19 @@
     tick(); started=true;
     const result=C.place(board,i,selected,p);
     if (!result.ok) { feedback(result.message,'error'); cells[i].classList.remove('wrong'); void cells[i].offsetWidth; cells[i].classList.add('wrong'); return; }
+    const placed = result.board[i] >= 0 && result.board[i] !== board[i];
     history.push(board.slice()); history=history.slice(-200); board=result.board; hintIndex=-1;
+    if (placed) {
+      metrics.event('first-move');
+      if (phase() === 'ready') metrics.event('guided-region');
+      if (continued && [3,4,5].some(r => C.inspect(board,r).complete)) metrics.event('independent-region');
+      if (phase() === 'done') metrics.event('solved');
+    }
     render(); announceDefault(); save();
     if (phase() === 'ready') $('continue').focus({preventScroll:true});
     if (phase() === 'done') { $('copyResult').focus({preventScroll:true}); $('win').scrollIntoView({block:'nearest',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'}); }
   }
-  $('continue').addEventListener('click',() => { tick(); continued=true; selected=3; render(); announceDefault(); save(); });
+  $('continue').addEventListener('click',() => { tick(); continued=true; selected=3; metrics.event('continued'); render(); announceDefault(); save(); });
   $('undo').addEventListener('click',() => { if (!history.length) return; tick(); board=history.pop(); hintIndex=-1; if (!continued) selected=1; render(); announceDefault(); save(); });
   $('hint').addEventListener('click',() => {
     if (phase() === 'ready') { feedback('You have already found this region. Continue below to try the rest.','success'); return; }
@@ -131,7 +140,7 @@
     const occupied=C.inspect(board,r).cells;
     const i=answer.findIndex((reg,index) => reg === r && board[index] < 0 && (!occupied.length || C.neighbors(index).some(j => board[j] === r)));
     if (i < 0) { feedback('Reconnect this region or undo its last change before adding another tile.','error'); return; }
-    if (hintIndex !== i) hints++; hintIndex=i; selected=r; render(); save();
+    if (hintIndex !== i) { hints++; metrics.event('hint'); } hintIndex=i; selected=r; render(); save();
     feedback('Try the outlined '+C.grid[i]+' in row '+(Math.floor(i/6)+1)+', column '+(i%6+1)+'. '+(occupied.length ? 'It joins '+C.regions[r].name.toLowerCase()+' '+C.regions[r].letter+' along an edge.' : 'Start '+C.regions[r].name.toLowerCase()+' '+C.regions[r].letter+' here.'));
   });
   $('reset').addEventListener('click',() => $('resetDialog').showModal());
@@ -151,6 +160,7 @@
     $('copyLink').textContent=ok ? (local ? 'Local preview link copied' : 'Challenge link copied') : 'Select the address above to copy';
     if (local) $('previewNote').hidden=false;
   });
+  $('storeLink').addEventListener('click',() => metrics.event('store-click'));
   $('copyResult').addEventListener('click',async () => {
     const ok=await copy($('resultText').value);
     $('resultText').hidden=false;
