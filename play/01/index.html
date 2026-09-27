@@ -9,6 +9,7 @@
   <link rel="icon" href="mark.svg" type="image/svg+xml">
   <link rel="stylesheet" href="style.css">
   <script src="core.js" defer></script>
+  <script src="metrics.js" defer></script>
   <script src="app.js" defer></script>
 </head>
 <body>
@@ -23,6 +24,7 @@
       <p class="eyebrow"><span></span> ONE SMALL PUZZLE BREAK</p>
       <h1 id="heading">The numbers stay.<br><em>You choose<br class="desktop-break"> the regions.</em></h1>
       <p class="lede">Turn a grid of numbers into six connected regions. Every region needs <strong>1–6, once each.</strong></p>
+      <div id="measurement" class="measurement" hidden><label><input id="measurementConsent" type="checkbox"> Help improve this puzzle (optional)</label><p>Share basic play-step counts. <a href="../../privacy/#browser-challenge">What is counted?</a></p><p id="measurementStatus" role="status"></p></div>
       <div class="desktop-note"><span class="note-rule"></span><p>No numbers to enter.<br>Just find what belongs together.</p></div>
       <div class="range"><p>More to explore in the app</p><div class="sizes" aria-label="The full app includes 4 by 4, 5 by 5, 6 by 6, 7 by 7 and 8 by 8 grids"><span>4×4</span><span>5×5</span><span class="current">6×6</span><span>7×7</span><span>8×8</span></div><p class="modes">Logic · Chroma · Equate</p></div>
     </section>
@@ -50,11 +52,11 @@
         <button id="playAgain" class="again">Play again</button>
       </section>
       <details class="rules"><summary>How it works</summary><ol><li>The numbers never move. You color the tiles.</li><li>Each region must contain six tiles with 1, 2, 3, 4, 5 and 6 once each.</li><li>Tiles in the same region must join along their edges. Corners alone do not count.</li><li>Choose a color, then tap tiles. Tap a tile again with its color selected to clear it. The starting tiles stay fixed.</li></ol><p>Keyboard: Tab to the board; arrow keys move between tiles; Enter or Space colors a tile. Letters A–F select a region after the first move.</p></details>
-      <div class="app-invite"><div><strong>A little more room to think.</strong><p>Try the full game on iPhone &amp; iPad.</p></div><a href="https://apps.apple.com/app/id6773765192" class="store">View on the App Store <span aria-hidden="true">↗</span></a><p class="price-note">Free to download · ads &amp; optional in-app purchases</p></div>
+      <div class="app-invite"><div><strong>A little more room to think.</strong><p>Try the full game on iPhone &amp; iPad.</p></div><a href="https://apps.apple.com/app/apple-store/id6773765192?pt=120202877&amp;ct=sampler&amp;mt=8" class="store" id="storeLink">View on the App Store <span aria-hidden="true">↗</span></a><p class="price-note">Free to download · ads &amp; optional in-app purchases</p></div>
     </section>
   </main>
-  <footer><span>One free Logic challenge. Take your time.</span><button id="copyLink">Copy challenge link</button><p>This demo saves progress in this browser. No account, ads or analytics scripts.</p><p id="previewNote" hidden>Local preview: this challenge link works only on this Mac until the page is published.</p></footer>
+  <footer><span>One free Logic challenge. Take your time.</span><button id="copyLink">Copy challenge link</button><p>This demo saves progress in this browser. No account or ads. Optional measurement is off until you choose it. <a href="../../privacy/#browser-challenge">Privacy</a>.</p><p id="previewNote" hidden>Local preview: this challenge link works only on this Mac until the page is published.</p></footer>
   <dialog id="resetDialog" aria-labelledby="resetTitle"><h2 id="resetTitle">Start this puzzle again?</h2><p>This clears only your progress on Challenge 01 in this browser.</p><div class="dialog-actions"><button id="cancelReset">Keep playing</button><button id="confirmReset" class="primary">Restart puzzle</button></div></dialog>
-  <noscript><p class="no-js">This puzzle needs JavaScript. You can also <a href="https://apps.apple.com/app/id6773765192">find Tessera on the App Store</a>.</p></noscript>
+  <noscript><p class="no-js">This puzzle needs JavaScript. You can also <a href="https://apps.apple.com/app/apple-store/id6773765192?pt=120202877&amp;ct=sampler&amp;mt=8">find Tessera on the App Store</a>.</p></noscript>
 </body>
 </html>
