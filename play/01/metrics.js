@@ -4,12 +4,10 @@
   const endpoint = 'https://gaborandi.goatcounter.com/count';
   const storageKey = 'tessera.sampler01.measurement.v1';
   const qaKey = 'tessera.measurement.exclude';
-  const stages = new Set(['start','first-move','guided-region','continued','independent-region','hint','solved','store-click']);
-  const sources = new Set(['website','reddit_puzzles','youtube','editorial']);
+  const stages = new Set(['start','first-move','guided-region','continued','independent-region','hint','solved','store-click','store-click-android']);
+  const sources = new Set(['website','reddit_puzzles','youtube','editorial','bonte','thinky','instagram']);
   const params = new URLSearchParams(location.search);
   const source = sources.has(params.get('src')) ? params.get('src') : 'unlabelled';
-  const store = document.getElementById('storeLink');
-  if (store) store.href = 'https://apps.apple.com/app/apple-store/id6773765192?pt=120202877&ct=' + (source === 'unlabelled' ? 'sampler' : 'sampler_'+source) + '&mt=8';
   let excluded = location.hostname !== 'gaborandi.github.io' || location.protocol !== 'https:' || params.get('qa') === '1';
   try {
     if (params.get('qa') === '1') localStorage.setItem(qaKey,'1');
@@ -29,6 +27,16 @@
       initialized = true;
     }
   } catch (_) {}
+  // Keep outbound labels aligned with the first source retained in this tab.
+  // These are fixed campaign labels, not a player ID or a matched install funnel.
+  const campaign = cohortSource === 'unlabelled' ? 'sampler' : 'sampler_'+cohortSource;
+  const store = document.getElementById('storeLink');
+  const androidStore = document.getElementById('storeLinkAndroid');
+  if (store) store.href = 'https://apps.apple.com/app/apple-store/id6773765192?pt=120202877&ct='+campaign+'&mt=8';
+  if (androidStore) {
+    const referral = new URLSearchParams({utm_source:campaign,utm_medium:'web',utm_campaign:'android_oct26'});
+    androidStore.href = 'https://play.google.com/store/apps/details?id=com.tesserapuzzle.app&referrer='+encodeURIComponent(referral.toString());
+  }
   function save() {
     try { sessionStorage.setItem(storageKey,JSON.stringify({consent,cohort,source:cohortSource,sent:[...sent]})); } catch (_) {}
   }
