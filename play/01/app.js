@@ -160,7 +160,8 @@
     $('copyLink').textContent=ok ? (local ? 'Local preview link copied' : 'Challenge link copied') : 'Select the address above to copy';
     if (local) $('previewNote').hidden=false;
   });
-  $('storeLink').addEventListener('click',() => metrics.event('store-click'));
+  if ($('storeLink')) $('storeLink').addEventListener('click',() => metrics.event('store-click'));
+  if ($('storeLinkAndroid')) $('storeLinkAndroid').addEventListener('click',() => metrics.event('store-click-android'));
   $('copyResult').addEventListener('click',async () => {
     const ok=await copy($('resultText').value);
     $('resultText').hidden=false;
