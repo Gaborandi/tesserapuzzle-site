@@ -30,6 +30,15 @@
     catch (_) { storageAvailable = false; }
   }
   function feedback(text,kind='') { $('feedback').textContent = text; $('feedback').className = 'feedback '+kind; }
+  // Bring the message and the Undo/Hint row on screen when the player needs them (a rejected move, a hint, a new stage).
+  // Ordinary moves never scroll. Reduced-motion users get an instant jump.
+  function showControls() {
+    const target=$('controls').hidden ? $('feedback') : $('controls');
+    const c=target.getBoundingClientRect(), f=$('feedback').getBoundingClientRect();
+    if (c.bottom <= innerHeight && f.top >= 0) return;
+    const by=c.bottom > innerHeight ? Math.min(c.bottom-innerHeight+8,Math.max(0,f.top-8)) : f.top-8;
+    scrollBy({top:by,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
+  }
   function announceDefault() {
     const p = phase();
     if (p === 'opening') feedback('Two regions are already done. Finish green to learn the rule.');
@@ -76,6 +85,7 @@
   $('controls').parentNode.appendChild(mobileRange);
   function render() {
     const p=phase(), chosen=C.regions[selected], info=C.inspect(board,selected);
+    document.documentElement.dataset.phase=p;
     document.documentElement.style.setProperty('--selected',chosen.color);
     cells.forEach((b,i) => {
       const r=board[i], region=r >= 0 ? C.regions[r] : null;
@@ -116,7 +126,7 @@
     if (p === 'ready') { feedback('Select “Finish this puzzle” below when you’re ready for the other regions.'); return; }
     tick(); started=true;
     const result=C.place(board,i,selected,p);
-    if (!result.ok) { feedback(result.message,'error'); cells[i].classList.remove('wrong'); void cells[i].offsetWidth; cells[i].classList.add('wrong'); return; }
+    if (!result.ok) { feedback(result.message,'error'); cells[i].classList.remove('wrong'); void cells[i].offsetWidth; cells[i].classList.add('wrong'); showControls(); return; }
     const placed = result.board[i] >= 0 && result.board[i] !== board[i];
     history.push(board.slice()); history=history.slice(-200); board=result.board; hintIndex=-1;
     if (placed) {
@@ -126,22 +136,24 @@
       if (phase() === 'done') metrics.event('solved');
     }
     render(); announceDefault(); save();
-    if (phase() === 'ready') $('continue').focus({preventScroll:true});
+    if (phase() === 'ready') { $('continue').focus({preventScroll:true}); showControls(); }
+    else if ($('feedback').classList.contains('error')) showControls();
     if (phase() === 'done') { $('copyResult').focus({preventScroll:true}); $('win').scrollIntoView({block:'nearest',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'}); }
   }
-  $('continue').addEventListener('click',() => { tick(); continued=true; selected=3; metrics.event('continued'); render(); announceDefault(); save(); });
+  $('continue').addEventListener('click',() => { tick(); continued=true; selected=3; metrics.event('continued'); render(); announceDefault(); save(); showControls(); });
   $('undo').addEventListener('click',() => { if (!history.length) return; tick(); board=history.pop(); hintIndex=-1; if (!continued) selected=1; render(); announceDefault(); save(); });
   $('hint').addEventListener('click',() => {
-    if (phase() === 'ready') { feedback('You have already found this region. Continue below to try the rest.','success'); return; }
+    if (phase() === 'ready') { feedback('You have already found this region. Continue below to try the rest.','success'); showControls(); return; }
     const answer=C.completionFor(board);
-    if (!answer) { feedback('A previous choice blocks a full solution. Undo recent moves until a hint can fit.','error'); return; }
+    if (!answer) { feedback('A previous choice blocks a full solution. Undo recent moves until a hint can fit.','error'); showControls(); return; }
     let r=phase() === 'opening' ? 1 : selected;
     if (C.inspect(board,r).complete) r=C.regions.findIndex((_,reg) => !C.inspect(board,reg).complete);
     const occupied=C.inspect(board,r).cells;
     const i=answer.findIndex((reg,index) => reg === r && board[index] < 0 && (!occupied.length || C.neighbors(index).some(j => board[j] === r)));
-    if (i < 0) { feedback('Reconnect this region or undo its last change before adding another tile.','error'); return; }
+    if (i < 0) { feedback('Reconnect this region or undo its last change before adding another tile.','error'); showControls(); return; }
     if (hintIndex !== i) { hints++; metrics.event('hint'); } hintIndex=i; selected=r; render(); save();
     feedback('Try the outlined '+C.grid[i]+' in row '+(Math.floor(i/6)+1)+', column '+(i%6+1)+'. '+(occupied.length ? 'It joins '+C.regions[r].name.toLowerCase()+' '+C.regions[r].letter+' along an edge.' : 'Start '+C.regions[r].name.toLowerCase()+' '+C.regions[r].letter+' here.'));
+    showControls();
   });
   $('reset').addEventListener('click',() => $('resetDialog').showModal());
   $('playAgain').addEventListener('click',() => $('resetDialog').showModal());
