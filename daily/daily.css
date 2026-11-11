@@ -5,3 +5,5 @@
 /* Phones: puzzle first. The short rules stay above the board; the longer notes move below the controls. */
 @media(max-width:700px){header{padding:14px 20px}main{display:flex;flex-direction:column;gap:0}.intro,.puzzle{display:contents}.intro>*{order:1}.puzzle>*{order:2}.intro>.more{order:3;margin-top:18px}.puzzle>.keyboard{order:4}.puzzle>.stores{order:5}.intro .eyebrow,.intro .lead{display:none}.intro h1{font-size:25px;line-height:1.2;letter-spacing:-.5px;margin:4px 0 8px}.intro ol{margin:0 0 4px;font-size:14px;line-height:1.45}.intro li{margin:2px 0}.meta{margin:10px 0}#palette{margin:12px 0 8px}#feedback{min-height:44px}.more a{display:inline-block;padding:10px 0}}
 
+/* A repeated number inside one region: outline both tiles so the mistake is easy to find. */
+.cell.clash{border-color:#ff8a80;box-shadow:inset 0 0 0 2px #ff8a80}.cell.clash span{color:#ffb4ab}
