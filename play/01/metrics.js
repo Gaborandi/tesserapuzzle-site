@@ -5,7 +5,7 @@
   const storageKey = 'tessera.sampler01.measurement.v1';
   const qaKey = 'tessera.measurement.exclude';
   const stages = new Set(['start','first-move','guided-region','continued','independent-region','hint','solved','store-click','store-click-android']);
-  const sources = new Set(['website','reddit_puzzles','youtube','editorial','bonte','thinky','instagram']);
+  const sources = new Set(['website','reddit_puzzles','youtube','editorial','bonte','thinky','instagram','pp_20261120_logic']);
   const params = new URLSearchParams(location.search);
   const source = sources.has(params.get('src')) ? params.get('src') : 'unlabelled';
   let excluded = location.hostname !== 'gaborandi.github.io' || location.protocol !== 'https:' || params.get('qa') === '1';
@@ -34,7 +34,7 @@
   const androidStore = document.getElementById('storeLinkAndroid');
   if (store) store.href = 'https://apps.apple.com/app/apple-store/id6773765192?pt=120202877&ct='+campaign+'&mt=8';
   if (androidStore) {
-    const referral = new URLSearchParams({utm_source:campaign,utm_medium:'web',utm_campaign:'android_oct26'});
+    const referral = new URLSearchParams({utm_source:campaign,utm_medium:'web',utm_campaign:cohortSource === 'pp_20261120_logic' ? campaign : 'android_oct26'});
     androidStore.href = 'https://play.google.com/store/apps/details?id=com.tesserapuzzle.app&referrer='+encodeURIComponent(referral.toString());
   }
   function save() {
