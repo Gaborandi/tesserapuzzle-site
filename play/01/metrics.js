@@ -35,7 +35,8 @@
   if (store) store.href = 'https://apps.apple.com/app/apple-store/id6773765192?pt=120202877&ct='+campaign+'&mt=8';
   if (androidStore) {
     const referral = new URLSearchParams({utm_source:campaign,utm_medium:'web',utm_campaign:cohortSource === 'pp_20261120_logic' ? campaign : 'android_oct26'});
-    androidStore.href = 'https://play.google.com/store/apps/details?id=com.tesserapuzzle.app&referrer='+encodeURIComponent(referral.toString());
+    const listingTags = cohortSource === 'youtube' ? '&'+referral.toString() : '';
+    androidStore.href = 'https://play.google.com/store/apps/details?id=com.tesserapuzzle.app'+listingTags+'&referrer='+encodeURIComponent(referral.toString());
   }
   function save() {
     try { sessionStorage.setItem(storageKey,JSON.stringify({consent,cohort,source:cohortSource,sent:[...sent]})); } catch (_) {}
