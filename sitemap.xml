@@ -26,4 +26,8 @@
   </url>
   <url><loc>https://gaborandi.github.io/tesserapuzzle-site/daily/</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
   <url><loc>https://gaborandi.github.io/tesserapuzzle-site/play/01/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://gaborandi.github.io/tesserapuzzle-site/games/</loc><lastmod>2026-11-21</lastmod></url>
+  <url><loc>https://gaborandi.github.io/tesserapuzzle-site/games/neon-eye/</loc><lastmod>2026-11-21</lastmod></url>
+  <url><loc>https://gaborandi.github.io/tesserapuzzle-site/games/lapsewood/</loc><lastmod>2026-11-21</lastmod></url>
+  <url><loc>https://gaborandi.github.io/tesserapuzzle-site/games/tintsmith/</loc><lastmod>2026-11-21</lastmod></url>
 </urlset>

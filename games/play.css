@@ -1,0 +1,51 @@
+.play-page { --stage: #1b1b2c; --outline: #4d4762; background: #10101c; min-height: 100vh; }
+.play-page.neon { --accent: #89ebfa; --on-accent: #071d29; --stage: #121c2f; --outline: #405e77; }
+.play-page.lapse { --accent: #e1ecb0; --on-accent: #1b2921; --stage: #202f2d; --outline: #677a5b; }
+.play-page.tint { --accent: #ffccda; --on-accent: #321a29; --stage: #2b2132; --outline: #78536a; }
+.play-shell { width: min(815px, 100%); margin: 0 auto; }
+.play-head { display: flex; align-items: center; gap: 12px; margin-bottom: 9px; }
+.play-head h1 { margin: 0; font-size: clamp(2.0rem,6vw,3.7rem); }
+.play-description { max-width: 57ch; margin: 0 0 15px; line-height: 1.52; color: var(--muted); }
+.stage {
+  display: grid; gap: 14px; border: 1px solid var(--outline);
+  background: var(--stage); border-radius: 21px; padding: clamp(14px,4vw,24px);
+}
+.stage-title { font-size: clamp(1.28rem,4vw,1.65rem); font-weight: 740; letter-spacing: -.025em; }
+.stage-meta { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 7px; font-size: .93rem; }
+.actions.play-controls { margin-top: 0; gap: 8px; }
+.button.secondary { background: #181623; border-color: var(--outline); }
+.button:disabled { opacity: .57; }
+.status { min-height: 1.45em; line-height: 1.46; }
+.after-play { margin-top: 14px; }
+.after-play .actions { margin-top: 0; }
+.help { color: var(--muted); margin-top: 12px; }
+.help summary { padding: 9px 0; min-height: 44px; cursor: pointer; font-weight: 650; }
+.help p { max-width: 62ch; line-height: 1.45; margin: 3px 0 11px; }
+.dial { position: relative; isolation: isolate; width: min(64vw,245px); aspect-ratio: 1; margin: 2px auto; border-radius: 50%; border: 1px solid #6b96bb; box-shadow: 0 0 28px #63d4fe34, inset 0 0 40px #06101c; background: #070b17; overflow: hidden; }
+.dial .target { position: absolute; inset: 5%; border-radius: 50%; background: conic-gradient(from var(--target-angle, 36deg), #7feeac 0deg var(--width, 48deg), #24344c var(--width, 48deg) 360deg); }
+.dial .face { position: absolute; inset: 10%; border-radius: 50%; background: repeating-radial-gradient(circle, #101626 0 15px, #294265 15px 16px, #101626 16px 28px); }
+.dial .needle { --rotation: 0deg; position: absolute; z-index: 1; top: 10%; right: calc(50% - 2px); width: 4px; height: 40%; border-radius: 5px; background: #f6fbff; transform-origin: 50% 100%; transform: rotate(var(--rotation)); box-shadow: 0 0 11px #81dffa; }
+.dial .pin { position: absolute; z-index: 2; top: calc(50% - 5px); left: calc(50% - 5px); width: 10px; height: 10px; border-radius: 50%; background: #f9fbff; }
+.garden { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 6px; width: min(100%,365px); margin: 0 auto; border: 1px solid #bfc59a; border-radius: 16px; padding: 10px; background: #3b4e37 url('assets/lapsewood-garden.webp') center 70%/cover; }
+.tile, .tile-space { aspect-ratio: 1; min-width: 44px; min-height: 44px; border-radius: 10px; }
+.tile { display: grid; grid-template-rows: 1fr auto; place-items: center; padding: 5px 3px; color: #f2f5dc; border: 1px solid #a2b589; background: #263d30; font: 650 clamp(.68rem,2.4vw,.88rem)/1.15 system-ui,sans-serif; cursor: pointer; }
+.tile[data-kind="water"] { background: #244b51; border-color: #a0d4ca; }
+.tile img { display: block; width: 64%; max-height: 68px; object-fit: contain; }
+.tile:focus-visible { outline-offset: 1px; }
+.tile:disabled { cursor: default; }
+.tile-space { background: #29382850; border: 1px solid #535c496e; }
+.tile[data-changed="true"] { border-color: #f3fbb5; box-shadow: inset 0 0 0 2px #f3fbb5; }
+.swatches { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 10px; }
+.swatch { min-width: 0; text-align: center; }
+.swatch-color { height: clamp(82px,19vw,120px); border: 1px solid #e4bdcd; border-radius: 12px; margin-bottom: 7px; background: #514c55; }
+.swatch-color.target { background: #e6a6a3; }
+.palette { display: grid; gap: 7px; }
+.pigment { display: grid; grid-template-columns: minmax(75px,1fr) 44px 26px 44px; gap: 5px; align-items: center; }
+.pigment .button { padding: 6px; font-size: 1.1rem; }
+.pigment output { text-align: center; }
+.pigment-name { line-height: 1.15; font-size: .92rem; }
+@media (max-width: 400px) {
+  .play-head .game-icon { width: 40px; height: 40px; }
+  .garden { padding: 6px; gap: 4px; }
+  .swatch-color { height: 72px; }
+}

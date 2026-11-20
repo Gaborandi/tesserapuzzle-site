@@ -3,61 +3,73 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Play a free daily logic puzzle in your browser and discover Gaborandi’s puzzle and reflex games.">
+  <meta name="description" content="Play Gaborandi’s browser puzzles and reflex games. Try Tessera, Neon Eye, Lapsewood, and Tintsmith, then find the full games in their stores.">
   <meta name="theme-color" content="#10101c">
-  <title>Gaborandi Games · Puzzle &amp; Reflex Games</title>
+  <link rel="canonical" href="https://gaborandi.github.io/tesserapuzzle-site/games/">
   <link rel="icon" href="assets/tessera.webp">
   <link rel="stylesheet" href="games.css">
   <script src="games.js" defer></script>
+  <title>Gaborandi Games · Play in Your Browser</title>
 </head>
 <body>
+  <a class="skip" href="#content">Skip to games</a>
   <header class="masthead shell">
-    <a class="brand" href="https://gaborandi.github.io/tesserapuzzle-site/"><img src="assets/tessera.webp" width="34" height="34" alt="">Gaborandi</a>
-    <a class="jump" href="#more-games">More games <span aria-hidden="true">↓</span></a>
+    <a class="brand" href="./">Gaborandi</a>
+    <nav aria-label="Games"><a class="jump" href="#more-games">All games</a></nav>
   </header>
-  <main class="shell">
+  <main id="content" class="shell">
+    <h1>Gaborandi games</h1>
     <section class="feature" aria-labelledby="tessera-title">
       <div class="feature-copy">
-        <h1 id="tessera-title">Tessera</h1>
+        <img class="game-icon" src="assets/tessera.webp" width="56" height="56" alt="">
+        <h2 id="tessera-title">Tessera</h2>
         <p class="hook">The numbers stay.<br>You draw the regions.</p>
-        <p class="intro">Split a grid into connected regions with no repeated numbers. Try a free 5×5 daily puzzle in your browser.</p>
+        <p class="intro">Split the grid into connected regions with each number appearing once. A fresh 5×5 puzzle is ready to play in your browser.</p>
         <div class="actions">
-          <a class="button primary" href="https://gaborandi.github.io/tesserapuzzle-site/daily/">Play today’s puzzle <span aria-hidden="true">↗</span></a>
-          <div class="stores">
-            <a class="button store" data-tessera-apple href="https://apps.apple.com/app/id6773765192" aria-label="Tessera on the App Store">App Store</a>
-            <a class="button store" data-tessera-play href="https://play.google.com/store/apps/details?id=com.tesserapuzzle.app" aria-label="Tessera on Google Play">Google Play</a>
-          </div>
+          <a class="button primary" href="../daily/">Play today’s puzzle</a>
+          <a class="button store" data-tessera-apple href="https://apps.apple.com/app/id6773765192" aria-label="Tessera on the App Store">App Store</a>
+          <a class="button store" data-tessera-play href="https://play.google.com/store/apps/details?id=com.tesserapuzzle.app" aria-label="Tessera on Google Play">Google Play</a>
         </div>
+        <div class="details"><a href="../play/01/">Try a guided puzzle</a><a href="../">Tessera website</a></div>
       </div>
       <figure class="board">
-        <img src="assets/tessera-board.webp" width="408" height="408" alt="Tessera 7 by 7 Logic board with seven outlined, connected regions">
+        <img src="assets/tessera-board.webp" width="408" height="408" alt="A Tessera 7×7 Logic grid divided into seven colored regions">
         <figcaption>Tessera · 7×7 Logic</figcaption>
       </figure>
     </section>
     <section id="more-games" aria-labelledby="more-title">
-      <h2 id="more-title">More from Gaborandi</h2>
+      <h2 id="more-title">More games to play</h2>
       <div class="games">
         <article class="card neon">
-          <img src="assets/neon-eye.jpg" width="52" height="52" alt="">
-          <h3>Neon Eye</h3>
-          <p>Time your tap as the needle crosses the target.</p>
-          <a class="button store" href="https://apps.apple.com/app/id6772494283" aria-label="Neon Eye on the App Store">App Store <span aria-hidden="true">↗</span></a>
+          <img class="card-art" src="assets/neon-eye-game.webp" alt="Neon Eye’s needle circling a bright target arc" width="720" height="436" loading="lazy">
+          <div class="card-body">
+            <div class="card-title"><img class="game-icon" src="assets/neon-eye.jpg" width="42" height="42" alt=""><h3>Neon Eye</h3></div>
+            <p>Follow the needle and tap as it crosses the glowing arc.</p>
+            <a class="button primary" href="neon-eye/">Play a timing round</a>
+            <div class="details"><a href="https://gaborandi.github.io/neon-eye-privacy/">Neon Eye website</a><a href="https://apps.apple.com/app/id6772494283" aria-label="Neon Eye on the App Store">App Store</a></div>
+          </div>
         </article>
         <article class="card lapse">
-          <img src="assets/lapsewood.jpg" width="52" height="52" alt="">
-          <h3>Lapsewood</h3>
-          <p>Move nature through time and set off small chain reactions.</p>
-          <a class="button store" href="https://apps.apple.com/app/id6820984386" aria-label="Lapsewood on the App Store">App Store <span aria-hidden="true">↗</span></a>
+          <img class="card-art" src="assets/lapsewood-game.webp" alt="Lapsewood’s Seeds and Water garden board" width="720" height="436" loading="lazy">
+          <div class="card-body">
+            <div class="card-title"><img class="game-icon" src="assets/lapsewood.jpg" width="42" height="42" alt=""><h3>Lapsewood</h3></div>
+            <p>Age tiles, bring rain to the garden and wake neighboring seeds.</p>
+            <a class="button primary" href="lapsewood/">Play a garden puzzle</a>
+            <div class="details"><a href="https://gaborandi.github.io/patina-site/">Lapsewood website</a><a href="https://apps.apple.com/app/id6820984386" aria-label="Lapsewood on the App Store">App Store</a></div>
+          </div>
         </article>
         <article class="card tint">
-          <img src="assets/tintsmith.jpg" width="52" height="52" alt="">
-          <h3>Tintsmith</h3>
-          <p>Mix pigments and bring a painting back to color.</p>
-          <a class="button store" href="https://apps.apple.com/app/id6820236077" aria-label="Tintsmith on the App Store">App Store <span aria-hidden="true">↗</span></a>
+          <img class="card-art" src="assets/tintsmith-game.webp" alt="A cherry blossom pink mixture in Tintsmith’s color bowl" width="720" height="436" loading="lazy">
+          <div class="card-body">
+            <div class="card-title"><img class="game-icon" src="assets/tintsmith.jpg" width="42" height="42" alt=""><h3>Tintsmith</h3></div>
+            <p>Measure simulated pigments and mix a shade of cherry blossom pink.</p>
+            <a class="button primary" href="tintsmith/">Play a mixing puzzle</a>
+            <div class="details"><a href="https://gaborandi.github.io/tintsmith-site/">Tintsmith website</a><a href="https://apps.apple.com/app/id6820236077" aria-label="Tintsmith on the App Store">App Store</a></div>
+          </div>
         </article>
       </div>
     </section>
-    <footer><span>© 2026 Gaborandi</span><a href="https://gaborandi.github.io/tesserapuzzle-site/">About Tessera <span aria-hidden="true">↗</span></a></footer>
+    <footer><span>© 2026 Gaborandi</span><a href="../">Tessera home</a></footer>
   </main>
 </body>
 </html>
