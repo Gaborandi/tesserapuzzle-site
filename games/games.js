@@ -1,6 +1,6 @@
 const platform = new URLSearchParams(window.location.search).get('src');
 
-if (['tiktok', 'instagram', 'facebook'].includes(platform)) {
+if (['tiktok', 'instagram', 'facebook', 'share', 'whatsapp', 'instagram_story'].includes(platform)) {
   const apple = new URL('https://apps.apple.com/app/apple-store/id6773765192');
   apple.search = new URLSearchParams({ pt: '120202877', ct: platform, mt: '8' });
   document.querySelector('[data-tessera-apple]').href = apple.href;
